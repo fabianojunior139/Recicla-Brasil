@@ -17,7 +17,7 @@ function TipoCadastro() {
 
                     <div className='tipoCadastro-page__buttons'>
                         <a href="#" className='tipoCadastro-page__button'>Para você</a>
-                        <a href="#" className='tipoCadastro-page__button'>Para Empresas</a>
+                        <a href="/cadastroEmpresa" className='tipoCadastro-page__button'>Para Empresas</a>
                     </div>
 
                     <p className='tipoCadastro-page__return'>Já possui cadastro? <a href='/login' className='tipoCadastro-page__btn-return'>clique aqui</a></p>

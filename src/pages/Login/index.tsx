@@ -7,10 +7,6 @@ import './_styles.scss'
 
 function Login() {
 
-    function nFacaNada() {
-        console.log('fodase');
-    }
-
     return (
         <main className='login-page'>
             <div className='login-page__left-card'></div>
@@ -20,7 +16,7 @@ function Login() {
                     <Logo />
                 </div>
 
-                <form className='login-page__form' onSubmit={nFacaNada}>
+                <form className='login-page__form'>
                     <label className='login-page__label' htmlFor="user">E-mail</label>
                     <input className='login-page__input' type="email" name='user' id='user' required placeholder='email@gmail.com' />
 

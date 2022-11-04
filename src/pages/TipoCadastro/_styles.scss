@@ -86,10 +86,11 @@
 }
 
 @media(max-width: 675px) {
-    .page {
+    .tipoCadastro-page {
 
         &__card {
             width: 90%;
+            height: 18rem;
         }
 
         &__title {
@@ -99,7 +100,8 @@
         }
 
         &__button {
-            width: 100%;
+            width: 90%;
+            padding: 0.75rem;
         }
 
         &__return {
