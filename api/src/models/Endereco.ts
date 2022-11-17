@@ -1,8 +1,10 @@
+import RegisterNewAdressService from "../Services/EnderecoServices/RegisterNewAdressService";
+
 export interface IEndereco {
-    id: number, 
+    id: number,
     cep: string,
     longradouro: string,
-    numero: string,
+    numero: number,
     complemento: string,
     referencia: string,
     bairro: string,
@@ -25,7 +27,9 @@ class Endereco {
     private tel1: string;
     private tel2: string;
 
-    
+    static async CreateAdress({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: Omit<IEndereco, 'id'>) {
+        return await RegisterNewAdressService.execute({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 })
+    }
 
 }
 
