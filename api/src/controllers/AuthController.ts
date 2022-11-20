@@ -53,6 +53,31 @@ class AuthController {
         }
     }
 
+    // static async EditarSenha(id: number, senha: string) {
+    //     const usuario = await Usuario.findById(id);
+
+    //     if (usuario.length != 0) {
+    //         const senhaAtual = usuario[0].senha;
+
+    //         const verificaSenha = await bcrypt.compare(senha, senhaAtual);
+
+    //         if (verificaSenha === true) {
+    //             return false;
+    //         }
+
+    //         const hashSenha = await bcrypt.hash(senha, 10);
+
+    //         await Usuario.updatePass(id, hashSenha);
+    //         return true;
+
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
 }
 
 export default AuthController;
+
+
+

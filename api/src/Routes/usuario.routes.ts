@@ -14,6 +14,6 @@ usuarioRouter.post('/', async (req, res) => {
     const hashSenha = await bcrypt.hash(senha, 10);
     UsuarioController.CreateUser({nome, data_nascimento, cpf, email, senha: hashSenha, id_endereco});
     return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
-})
+});
 
 export default usuarioRouter;

@@ -1,3 +1,5 @@
+import ListAllCompaniesService from "../Services/EmpresaServices/ListAllCompaniesService";
+
 export interface IEmpresa {
     id: number,
     razao_social: string,
@@ -19,7 +21,9 @@ class Empresa {
     private empresa_ativa: boolean;
     private id_endereco: number;
 
-    
+    static async index() {
+        return await ListAllCompaniesService.execute();
+    }
 
 }
 
