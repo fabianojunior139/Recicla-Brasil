@@ -7,8 +7,8 @@ class UsuarioController {
         return Usuario.index();
     }
 
-    static CreateUser({nome, data_nascimento, cpf, email, senha, id_endereco}: Omit<IUsuario, 'id'>) {
-        Usuario.create({nome, data_nascimento, cpf, email, senha, id_endereco})
+    static CreateUser({ nome, data_nascimento, cpf, email, senha, id_endereco }: Omit<IUsuario, 'id'>) {
+        Usuario.create({ nome, data_nascimento, cpf, email, senha, id_endereco });
     }
 }
 

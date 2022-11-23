@@ -1,4 +1,5 @@
 import Usuario from "../models/Usuario"
+import Empresa from "../models/Empresa";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { NextFunction, Request, Response } from 'express';
@@ -14,9 +15,9 @@ class AuthController {
     static async login({ email, senha }: Ilogin) {
 
         const user = await Usuario.findByEmail(email);
+        const company = await Empresa.findByEmail(email);
 
         if (user) {
-
             const userPass = user.senha;
             const userId = user.id;
 
@@ -31,6 +32,25 @@ class AuthController {
                 user.auth = true;
 
                 return user;
+            } else {
+                return false;
+            }
+
+        } else if (company) {
+            const companyPass = company.senha;
+            const companyId = company.id;
+
+            const verifyPass = await bcrypt.compare(senha, companyPass);
+
+            if (verifyPass === true) {
+                const token = jwt.sign({ companyId }, SECRET, { expiresIn: '8h' });
+
+                delete company.senha;
+
+                company.token = token;
+                company.auth = true;
+
+                return company;
             } else {
                 return false;
             }

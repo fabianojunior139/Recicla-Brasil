@@ -1,6 +1,7 @@
 import ListUsersService from "../Services/UsuariosServices/ListUsersService";
 import RegisterUserService from "../Services/UsuariosServices/RegisterUserService";
 import FindUserByEmailService from "../Services/UsuariosServices/FindUserByEmailService";
+import FindUserByIdService from "../Services/UsuariosServices/FindUserByIdService";
 
 export interface IUsuario {
     id: number,
@@ -29,9 +30,15 @@ class Usuario {
         return await ListUsersService.execute();
     }
 
+    static async findById(id: number){
+        return await FindUserByIdService.execute(id);
+    }
+
     static async findByEmail(email: string){
         return await FindUserByEmailService.execute(email);
     }
+
+
 
     static async create({nome, data_nascimento, cpf, email, senha, id_endereco}: Omit<IUsuario, 'id'>){
         return await RegisterUserService.execute({nome, data_nascimento, cpf, email, senha, id_endereco});

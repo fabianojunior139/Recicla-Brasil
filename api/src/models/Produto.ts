@@ -1,3 +1,6 @@
+import ListAllProductsService from "../Services/ProdutoServices/ListAllProductsService";
+import RegisterNewProductService from "../Services/ProdutoServices/RegisterNewProductService";
+
 export interface IProduto {
     id: number,
     nome: string,
@@ -13,7 +16,13 @@ class Produto {
     private id_empresa: number;
     private id_categoria: number;
 
-    
+    static async index() {
+        return await ListAllProductsService.execute();
+    }
+
+    static async create({ nome, valor, id_categoria, id_empresa }: Omit<IProduto, 'id'>) {
+        return await RegisterNewProductService.execute({ nome, valor, id_categoria, id_empresa });
+    }
 }
 
 export default Produto

@@ -8,7 +8,7 @@ authRouter.post('/', async (req, res) => {
     const user = await AuthController.login({ email, senha });
 
     if (user) {
-        return res.status(200).json({ user });
+        return res.status(200).json(user);
     } else {
         return res.status(404).json({ message: 'Usuário ou senha incorretos.' });
     }

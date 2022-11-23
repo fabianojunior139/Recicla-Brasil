@@ -1,0 +1,90 @@
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS public.endereco
+(
+id serial NOT NULL,
+cep character varying NOT NULL,
+longradouro character varying NOT NULL,
+complemento character varying NOT NULL,
+referencia character varying NOT NULL,
+bairro character varying NOT NULL,
+cidade character varying NOT NULL,
+estado character varying NOT NULL,
+tel1 character varying NOT NULL,
+tel2 character varying,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.empresa
+(
+id serial NOT NULL,
+razao_social character varying NOT NULL,
+cnpj character varying NOT NULL,
+descricao character varying NOT NULL,
+email character varying NOT NULL,
+senha character varying NOT NULL,
+empresa_ativa boolean NOT NULL,
+id_endereco integer NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.produto
+(
+id serial NOT NULL,
+nome character varying NOT NULL,
+valor character varying NOT NULL,
+id_empresa integer NOT NULL,
+id_categoria integer NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.categoria
+(
+id serial NOT NULL,
+nome character varying NOT NULL,
+PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.usuario
+(
+id serial NOT NULL,
+nome character varying NOT NULL,
+data_nascimento character varying NOT NULL,
+cpf character varying NOT NULL,
+email character varying NOT NULL,
+senha character varying NOT NULL,
+admin boolean NOT NULL DEFAULT false,
+usuario_ativo boolean NOT NULL DEFAULT true,
+id_endereco integer NOT NULL,
+PRIMARY KEY (id)
+);
+
+ALTER TABLE IF EXISTS public.empresa
+ADD FOREIGN KEY (id_endereco)
+REFERENCES public.endereco (id) MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+NOT VALID;
+
+ALTER TABLE IF EXISTS public.produto
+ADD FOREIGN KEY (id_empresa)
+REFERENCES public.empresa (id) MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+NOT VALID;
+
+ALTER TABLE IF EXISTS public.produto
+ADD FOREIGN KEY (id_categoria)
+REFERENCES public.categoria (id) MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+NOT VALID;
+
+ALTER TABLE IF EXISTS public.usuario
+ADD FOREIGN KEY (id_endereco)
+REFERENCES public.endereco (id) MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+NOT VALID;
+
+END;

@@ -1,9 +1,10 @@
 import { Router } from "express";
 import EnderecoController from "../controllers/EnderecoController";
+import AuthController from "../controllers/AuthController";
 
 const enderecoRouter = Router();
 
-enderecoRouter.get('/', async (req, res) => {
+enderecoRouter.get('/', AuthController.verifyJWT, async (req, res) => {
     const enderecos = await EnderecoController.ListAdress();
     return res.status(200).json(enderecos);
 })
@@ -15,4 +16,4 @@ enderecoRouter.post('/', async (req, res) => {
 })
 
 
-export default enderecoRouter;
+export default enderecoRouter
