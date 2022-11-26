@@ -21,13 +21,13 @@ function RecuperaSenha() {
                     <div className="recuperaSenha-page__content">
                         <p className="recuperaSenha-page__title">Informe o endereço de e-mail cadastrado</p>
 
-                        <form className="recuperaSenha-page__form" action="#">
+                        <form className="recuperaSenha-page__form" onSubmit={() => setMsg(true)}>
                             <input className='recuperaSenha-page__input' type="email" name='email' id='email' required placeholder='email@gmail.com' />
 
-                            <button className="recuperaSenha-page__button" onClick={() => { setMsg(true) }}>Enviar</button>
+                            <button className="recuperaSenha-page__button" type='submit' >Enviar</button>
                         </form>
 
-                        <p className='recuperaSenha-page__return'>Para voltar para tela de login, <a href="/login" className='recuperaSenha-page__btn-return'>clique aqui</a></p>
+                        <p className='recuperaSenha-page__return'>Para voltar para tela de login <a href="/login" className='recuperaSenha-page__btn-return'>clique aqui</a></p>
                     </div>
 
                     :

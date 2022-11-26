@@ -8,7 +8,7 @@ import { authApi } from '../../database/api';
 
 import './_styles.scss';
 
-export const CadastroEndereco = () => {
+const CadastroEndereco = () => {
 
     const [endereco, setEndereco] = useState({} as IEndereco);
 
@@ -107,3 +107,4 @@ export const CadastroEndereco = () => {
     )
 }
 
+export default CadastroEndereco;

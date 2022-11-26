@@ -1,7 +1,7 @@
 import { FaUserCircle } from 'react-icons/fa';
 import { BsArrowRight } from 'react-icons/bs';
 import { AiOutlineCheck } from 'react-icons/ai';
-import { useParams, useNavigate, Navigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { authApi } from '../../database/api';
 
