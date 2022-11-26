@@ -10,9 +10,21 @@ enderecoRouter.get('/', AuthController.verifyJWT, async (req, res) => {
 })
 
 enderecoRouter.post('/', async (req, res) => {
+    const { cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 } = req.body;    
+    const idEndereco = await EnderecoController.CriarEndereco({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 });
+
+    if (idEndereco) {
+        return res.status(201).json(idEndereco);
+    } else {
+        return res.status(401).json({ message: 'Este número de celular já foi cadastrado, tente novamente!' });
+    }
+});
+
+enderecoRouter.put('/:id', AuthController.verifyJWT, async (req, res) => {
+    const id = parseInt(req.params.id);
     const { cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 } = req.body;
-    EnderecoController.CriarEndereco({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 });
-    return res.status(201).json({ message: 'Endereço cadastrado com sucesso!' });
+    EnderecoController.editAdress({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 });
+    return res.status(200).json({ message: 'Endereço atualizado com sucesso!' })
 })
 
 

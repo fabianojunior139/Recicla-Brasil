@@ -1,6 +1,6 @@
 @import '../../styles/abstract/variables';
 
-.cadastroEmpresa-page {
+.cadastroEndereco-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,24 +28,25 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        padding: 2rem;
+        padding: 2rem 3rem;
     }
 
-    &__title {
+    &__form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__titulo {
         text-align: center;
         margin-bottom: 1rem;
         font-size: 1.5rem;
     }
 
-    &__form {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
     &__passos {
-        align-self: center;
-        min-width: 25rem;
+        width: 25rem;
         height: 3rem;
         display: flex;
         margin: 0 auto;
@@ -64,38 +65,19 @@
             align-items: center;
             font-size: 0.75rem;
 
-            &-green {
-                width: 3rem;
-                height: 3rem;
-                border: 1px solid $color-green-dark;
-                border-radius: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 0.75rem;
-                background-color: $color-green-dark;
-            }
-
             &-icon {
                 font-size: 2rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 color: $color-black;
-
-                &-green {
-                    font-size: 2rem;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    color: $color-white;
-                }
             }
         }
+
     }
 
     &__descricao-passos {
-        min-width: 25rem;
+        width: 25rem;
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
@@ -106,9 +88,16 @@
         }
     }
 
-    &__label {
-        font-weight: 500;
-        margin-bottom: 0.25rem;
+    &__campo-requerido {
+        color: red;
+
+        &-text {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            color: red;
+            font-weight: 700;
+            align-self: center;
+        }
     }
 
     &__input {
@@ -118,6 +107,7 @@
         border-radius: 1rem;
         margin-bottom: 1rem;
         font-family: $font-Montserrat;
+        font-size: 0.9rem;
 
         &:focus {
             outline: 0;
@@ -128,9 +118,14 @@
     &__1labels {
         display: flex;
         width: 100%;
+        margin-bottom: 0.25rem;
 
-        &-razaoSocial {
-            min-width: 18.25rem;
+        &-cep {
+            min-width: 8.3rem;
+        }
+
+        &-longradouro {
+            min-width: 20rem;
         }
     }
 
@@ -138,17 +133,29 @@
         display: flex;
         width: 100%;
 
-        &-razaoSocial {
+        &-cep {
+            min-width: 7.5rem;
             margin-right: 0.5rem;
         }
+
+        &-longradouro {
+            min-width: 19.5rem;
+            margin-right: 0.5rem;
+        }
+
     }
 
     &__2labels {
         display: flex;
+        margin-bottom: 0.25rem;
         width: 100%;
 
-        &-senha {
-            min-width: 18.25rem;
+        &-complemento {
+            min-width: 12rem;
+        }
+
+        &-referencia {
+            min-width: 11.5rem;
         }
     }
 
@@ -156,15 +163,64 @@
         display: flex;
         width: 100%;
 
-        &-senha {
+        &-complemento {
+            min-width: 10rem;
+            margin-right: 0.5rem;
+        }
+
+        &-referencia {
+            min-width: 10rem;
+            margin-right: 0.5rem;
+        }
+    }
+
+    &__3labels {
+        display: flex;
+        margin-bottom: 0.25rem;
+        width: 100%;
+
+        &-cidade {
+            min-width: 17.75rem;
+        }
+
+    }
+
+    &__3inputs {
+        display: flex;
+        width: 100%;
+
+        &-cidade {
+            min-width: 16.75rem;
+            margin-right: 0.5rem;
+        }
+    }
+
+    &__4labels {
+        display: flex;
+        margin-bottom: 0.25rem;
+        width: 100%;
+
+        &-celular {
+            min-width: 17.75rem;
+        }
+
+    }
+
+    &__4inputs {
+        display: flex;
+        width: 100%;
+
+        &-celular {
+            min-width: 17rem;
             margin-right: 0.5rem;
         }
     }
 
     &__submit {
-        width: 100%;
+        min-width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     &__btn {
@@ -182,42 +238,6 @@
 
         &:hover {
             background-color: $color-green-dark;
-        }
-    }
-
-    &__textarea {
-        width: 100%;
-        height: 6rem;
-        resize: none;
-    }
-
-    &__campo-requerido {
-        color: red;
-
-        &-text {
-            align-self: flex-start;
-            font-size: 0.75rem;
-            color: red;
-            font-weight: 700;
-            align-self: center;
-        }
-    }
-}
-
-@media(max-width: 475px) {
-    .cadastroEmpresa-page {
-        text-align: center;
-
-        &__title {
-            font-size: 1.25rem;
-        }
-
-        &__label {
-            font-size: 1rem;
-        }
-
-        &__btn {
-            width: 100%;
         }
     }
 }

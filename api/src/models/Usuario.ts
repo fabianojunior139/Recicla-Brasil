@@ -2,6 +2,8 @@ import ListUsersService from "../Services/UsuariosServices/ListUsersService";
 import RegisterUserService from "../Services/UsuariosServices/RegisterUserService";
 import FindUserByEmailService from "../Services/UsuariosServices/FindUserByEmailService";
 import FindUserByIdService from "../Services/UsuariosServices/FindUserByIdService";
+import EditUserService from "../Services/UsuariosServices/EditUserService";
+import DeleteUserService from "../Services/UsuariosServices/DeleteUserService";
 
 export interface IUsuario {
     id: number,
@@ -9,10 +11,10 @@ export interface IUsuario {
     data_nascimento: string,
     cpf: string,
     email: string,
-    senha: string,
+    senha?: string,
     admin?: boolean,
     usuario_ativo?: boolean,
-    id_endereco: number
+    id_endereco?: number
 }
 
 class Usuario {
@@ -30,19 +32,25 @@ class Usuario {
         return await ListUsersService.execute();
     }
 
-    static async findById(id: number){
+    static async findById(id: number) {
         return await FindUserByIdService.execute(id);
     }
 
-    static async findByEmail(email: string){
+    static async findByEmail(email: string) {
         return await FindUserByEmailService.execute(email);
     }
 
+    static async create({ nome, data_nascimento, cpf, email, senha, id_endereco }: Omit<IUsuario, 'id'>) {
+        return await RegisterUserService.execute({ nome, data_nascimento, cpf, email, senha, id_endereco });
+    }
 
+    static async edit({ id, nome, data_nascimento, cpf, email }: Omit<IUsuario, 'senha, id_endereco'>) {
+        return await EditUserService.execute({ id, nome, data_nascimento, cpf, email })
+    }
 
-    static async create({nome, data_nascimento, cpf, email, senha, id_endereco}: Omit<IUsuario, 'id'>){
-        return await RegisterUserService.execute({nome, data_nascimento, cpf, email, senha, id_endereco});
-    } 
+    static async delete(id: number) {
+        return await DeleteUserService.execute(id)
+    }
 
 }
 

@@ -17,4 +17,22 @@ empresaRouter.post('/', async (req, res) => {
     return res.status(201).json({ message: "Usuário cadastrado com sucesso." })
 });
 
+empresaRouter.put('/:id', AuthController.verifyJWT, async (req, res) => {
+    const id = parseInt(req.params.id);
+    const { razao_social, cnpj, descricao, email, empresa_ativa } = req.body;
+    await EmpresaController.updateCompany({ id, razao_social, cnpj, descricao, email, empresa_ativa });
+    return res.status(200).json({ message: 'Usuário alterado com sucesso!' })
+})
+
+// empresaRouter.delete('/:id', AuthController.verifyJWT, async (req, res) => {
+//     const id = parseInt(req.params.id);
+//     const empresa = await EmpresaController.deleteCompany(id);
+
+//     if (empresa) {
+//         return res.status(200).json({ message: 'Usuário excluído com sucesso!' })
+//     } else {
+//         return res.status(401).json({ message: 'Usuário ainda ativo no sistema!' })
+//     }
+// })
+
 export default empresaRouter;

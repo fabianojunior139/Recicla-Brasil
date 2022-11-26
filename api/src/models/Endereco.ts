@@ -1,6 +1,7 @@
 import RegisterNewAdressService from "../Services/EnderecoServices/RegisterNewAdressService";
 import ListAllAdressService from "../Services/EnderecoServices/ListAllAdressService"; 
-
+import UpdateAdressService from "../Services/EnderecoServices/UpdateAdressService";
+import FindIdByCellphoneService from "../Services/EnderecoServices/FindIdByCellphoneService";
 export interface IEndereco {
     id: number,
     cep: string,
@@ -32,8 +33,17 @@ class Endereco {
         return await ListAllAdressService.execute();
     }
 
-    static async CreateAdress({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: Omit<IEndereco, 'id'>) {
-        return await RegisterNewAdressService.execute({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 })
+    static async findByCellphone(tel1: string) {
+        return await FindIdByCellphoneService.execute(tel1);
+    }
+
+    static async create({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: Omit<IEndereco, 'id'>) {
+        await RegisterNewAdressService.execute({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 })
+        return await this.findByCellphone(tel1); 
+    }
+
+    static async update({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: IEndereco) {
+        return await UpdateAdressService.execute({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 });
     }
 
 }

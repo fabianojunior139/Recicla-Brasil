@@ -1,16 +1,18 @@
 import ListAllCompaniesService from "../Services/EmpresaServices/ListAllCompaniesService";
 import CreateNewCompanyService from "../Services/EmpresaServices/CreateNewCompanyService";
 import FindCompanyByEmailService from "../Services/EmpresaServices/FindCompanyByEmailService";
+import FindCompanyByIdService from "../Services/EmpresaServices/FindCompanyByIdService";
+import UpdateCompanyService from "../Services/EmpresaServices/UpdateCompanyService";
 
 export interface IEmpresa {
     id?: number,
-    razao_social: string,
-    cnpj: string,
-    descricao: string,
-    email: string,
-    senha: string,
+    razao_social?: string,
+    cnpj?: string,
+    descricao?: string,
+    email?: string,
+    senha?: string,
     empresa_ativa?: boolean,
-    id_endereco: number
+    id_endereco?: number
 }
 
 class Empresa {
@@ -27,12 +29,20 @@ class Empresa {
         return await ListAllCompaniesService.execute();
     }
 
-    static async findByEmail(email: string){
+    static async findById(id: number) {
+        return await FindCompanyByIdService.execute(id);
+    }
+
+    static async findByEmail(email: string) {
         return await FindCompanyByEmailService.execute(email);
     }
-        
-    static async CriarEmpresa({ razao_social, cnpj, descricao, email, senha, id_endereco }: Omit<IEmpresa, 'id'>) {
+
+    static async create({ razao_social, cnpj, descricao, email, senha, id_endereco }: Omit<IEmpresa, 'id'>) {
         return await CreateNewCompanyService.execute({ razao_social, cnpj, descricao, email, senha, id_endereco });
+    }
+
+    static async update({ id, razao_social, cnpj, descricao, email, empresa_ativa }: Omit<IEmpresa, 'senha'>) {
+        return await UpdateCompanyService.execute({ id, razao_social, cnpj, descricao, email, empresa_ativa })
     }
 
 }

@@ -43,7 +43,7 @@ class AuthController {
             const verifyPass = await bcrypt.compare(senha, companyPass);
 
             if (verifyPass === true) {
-                const token = jwt.sign({ companyId }, SECRET, { expiresIn: '8h' });
+                const token = jwt.sign({ companyId }, SECRET, { expiresIn: '100000h' });
 
                 delete company.senha;
 
