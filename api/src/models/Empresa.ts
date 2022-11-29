@@ -9,9 +9,9 @@ export interface IEmpresa {
     razao_social?: string,
     cnpj?: string,
     descricao?: string,
-    email?: string,
+    email: string,
     senha?: string,
-    empresa_ativa?: boolean,
+    usuario_ativo?: boolean,
     id_endereco?: number
 }
 
@@ -22,7 +22,7 @@ class Empresa {
     private descricao: string;
     private email: string;
     private senha: string;
-    private empresa_ativa: boolean;
+    private usuario_ativo: boolean;
     private id_endereco: number;
 
     static async index() {
@@ -41,8 +41,8 @@ class Empresa {
         return await CreateNewCompanyService.execute({ razao_social, cnpj, descricao, email, senha, id_endereco });
     }
 
-    static async update({ id, razao_social, cnpj, descricao, email, empresa_ativa }: Omit<IEmpresa, 'senha'>) {
-        return await UpdateCompanyService.execute({ id, razao_social, cnpj, descricao, email, empresa_ativa })
+    static async update({ id, razao_social, cnpj, descricao, email, usuario_ativo }: Omit<IEmpresa, 'senha'>) {
+        return await UpdateCompanyService.execute({ id, razao_social, cnpj, descricao, email, usuario_ativo })
     }
 
 }

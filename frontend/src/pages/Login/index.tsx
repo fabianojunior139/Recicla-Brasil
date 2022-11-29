@@ -1,11 +1,34 @@
 import Logo from '../../components/Logo';
 import { FaFacebookSquare, FaInstagram, FaWhatsapp, FaTwitterSquare } from 'react-icons/fa';
+import AuthContext, { IUsuarioLogin } from '../../context/AuthContext';
+import { useContext, useState } from 'react';
 
 import './_styles.scss'
-
-
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+
+    const [user, setUser] = useState<IUsuarioLogin>({} as IUsuarioLogin);
+
+    const { login } = useContext(AuthContext);
+
+    const navigate = useNavigate();
+
+    function updateUser(event: React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = event.target;
+        setUser({ ...user, [name]: value })
+    }
+
+    function handleSubmit(e: any) {
+        e.preventDefault();
+
+        if (login(user)) {
+            navigate('/');
+        } else {
+            alert('usuário inválido');
+            navigate('/login')
+        }
+    }    
 
     return (
         <main className='login-page'>
@@ -16,12 +39,12 @@ function Login() {
                     <Logo />
                 </div>
 
-                <form className='login-page__form'>
+                <form className='login-page__form' onSubmit={handleSubmit}>
                     <label className='login-page__label' htmlFor="user">E-mail</label>
-                    <input className='login-page__input' type="email" name='user' id='user' required placeholder='email@gmail.com' />
+                    <input className='login-page__input' type="email" name='email' id='email' required placeholder='email@gmail.com' onChange={(e) => { updateUser(e) }} />
 
                     <label className='login-page__label' htmlFor="user">Senha</label>
-                    <input className='login-page__input' type="password" name='pass' id='pass' required placeholder='**********' />
+                    <input className='login-page__input' type="password" name='senha' id='senha' required placeholder='**********' onChange={(e) => { updateUser(e) }} />
 
                     <button type='submit' className='login-page__button'>ENTRAR</button>
                 </form>

@@ -1,18 +1,26 @@
 import Empresa from "../models/Empresa";
 import { IEmpresa } from "../models/Empresa";
-
+import Usuario from "../models/Usuario";
 class EmpresaController {
 
     static listCompanies() {
         return Empresa.index();
     }
 
-    static createCompany({ razao_social, cnpj, descricao, email, senha, id_endereco }: Omit<IEmpresa, 'id'>) {
-        return Empresa.create({ razao_social, cnpj, descricao, email, senha, id_endereco });
+    static async createCompany({ razao_social, cnpj, descricao, email, senha, id_endereco }: Omit<IEmpresa, 'id'>) {
+        const emailUserExists = await Usuario.findByEmail(email);
+        const emailCompanyExists = await Empresa.findByEmail(email)
+
+        if (!emailUserExists && !emailCompanyExists) {
+            Empresa.create({ razao_social, cnpj, descricao, email, senha, id_endereco });
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    static async updateCompany({ id, razao_social, cnpj, descricao, email, empresa_ativa }: Omit<IEmpresa, 'senha, id_endereco'>) {
-        return await Empresa.update({ id, razao_social, cnpj, descricao, email, empresa_ativa });
+    static async updateCompany({ id, razao_social, cnpj, descricao, email, usuario_ativo }: Omit<IEmpresa, 'senha, id_endereco'>) {
+        return await Empresa.update({ id, razao_social, cnpj, descricao, email, usuario_ativo });
     }
 
     // static async deleteCompany(id: number) {

@@ -5,11 +5,14 @@ import RecuperaSenha from './pages/RecuperaSenha';
 import CadastroEmpresa from './pages/CadastroEmpresa';
 import CadastroEndereco from './pages/CadastroEndereço';
 import CadastroUsuario from './pages/CadastroUsuario';
+import Home from './pages/Home';
 
 function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path='/' element={<Home />} />
+
                 <Route path='/login' element={<Login />} />
                 <Route path='/tipoCadastro' element={<TipoCadastro />} />
                 <Route path='/recuperaSenha' element={<RecuperaSenha />} />

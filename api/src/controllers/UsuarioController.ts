@@ -1,5 +1,6 @@
 import Usuario from "../models/Usuario";
 import { IUsuario } from "../models/Usuario";
+import Empresa from "../models/Empresa";
 
 class UsuarioController {
 
@@ -8,9 +9,10 @@ class UsuarioController {
     }
 
     static async CreateUser({ nome, data_nascimento, cpf, email, senha, id_endereco }: Omit<IUsuario, 'id'>) {
-        const emailExists = await Usuario.findByEmail(email);        
+        const emailUserExists = await Usuario.findByEmail(email);
+        const emailCompanyExists = await Empresa.findByEmail(email)
 
-        if (!emailExists) {
+        if (!emailUserExists && !emailCompanyExists) {
             Usuario.create({ nome, data_nascimento, cpf, email, senha, id_endereco });
             return true;
         } else {

@@ -13,14 +13,19 @@ empresaRouter.get('/', AuthController.verifyJWT, async (req, res) => {
 empresaRouter.post('/', async (req, res) => {
     const { razao_social, cnpj, descricao, email, senha, id_endereco } = req.body;
     const hashSenha = await bcrypt.hash(senha, 10);
-    EmpresaController.createCompany({ razao_social, cnpj, descricao, email, senha: hashSenha, id_endereco });
-    return res.status(201).json({ message: "Usuário cadastrado com sucesso." })
+    const empresa = await EmpresaController.createCompany({ razao_social, cnpj, descricao, email, senha: hashSenha, id_endereco });
+
+    if (empresa) {
+        return res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+    } else {
+        return res.status(401).json({ message: 'E-mail já cadastrado, tente novamente!' });
+    }
 });
 
 empresaRouter.put('/:id', AuthController.verifyJWT, async (req, res) => {
     const id = parseInt(req.params.id);
-    const { razao_social, cnpj, descricao, email, empresa_ativa } = req.body;
-    await EmpresaController.updateCompany({ id, razao_social, cnpj, descricao, email, empresa_ativa });
+    const { razao_social, cnpj, descricao, email, usuario_ativo } = req.body;
+    await EmpresaController.updateCompany({ id, razao_social, cnpj, descricao, email, usuario_ativo });
     return res.status(200).json({ message: 'Usuário alterado com sucesso!' })
 })
 
