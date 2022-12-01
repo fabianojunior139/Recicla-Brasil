@@ -1,0 +1,36 @@
+@import '../../styles/abstract/variables';
+
+.about-us {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__title {
+        margin: 2rem 2rem 1rem 2rem;
+        font-size: 1.5rem;
+    }
+
+    &__text {
+        font-size: 1rem;
+        text-align: justify;
+        margin: 1rem;
+    }
+
+    &__btn {
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        background-color: $color-green;
+        color: $color-white;
+        border-radius: 0.5rem;
+        margin-left: 0.25rem;
+        transition: 0.25s;
+        margin-top: 0.5rem;
+
+        &:hover {
+            background-color: $color-green-dark;
+        }
+    }
+}

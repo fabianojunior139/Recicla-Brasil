@@ -11,7 +11,7 @@ function RecuperaSenha() {
         <section className='recuperaSenha-page'>
 
             <div className='recuperaSenha-page__logo'>
-                <Logo />
+                <Logo width={256} height={128} />
             </div>
 
             <div className='recuperaSenha-page__card'>

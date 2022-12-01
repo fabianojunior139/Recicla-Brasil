@@ -36,7 +36,7 @@ function Login() {
             <div className='login-page__right-card'>
 
                 <div className='login-page__image'>
-                    <Logo />
+                    <Logo width={256} height={128}/>
                 </div>
 
                 <form className='login-page__form' onSubmit={handleSubmit}>

@@ -1,8 +1,11 @@
 import './_styles.scss';
+import NavBar from '../../components/Navbar';
 
 const Home = () => {
-    return(
-        <div>Olá caralho</div>
+    return (
+        <>
+            <NavBar />
+        </>
     )
 }
 

@@ -6,17 +6,17 @@ function TipoCadastro() {
         <section className='tipoCadastro-page'>
 
             <div className='tipoCadastro-page__logo'>
-                <Logo />
+                <Logo width={256} height={128}/>
             </div>
 
             <div className="tipoCadastro-page__card">
                 
                 <div className="tipoCadastro-page__content">
 
-                    <p className="tipoCadastro-page__title">Qual tipo de cadastro é o seu?</p>
+                    <p className="tipoCadastro-page__title">Qual tipo de cadastro deseja realizar?</p>
 
                     <div className='tipoCadastro-page__buttons'>
-                        <a href="/cadastroEndereco/Usuario" className='tipoCadastro-page__button'>Para você</a>
+                        <a href="/cadastroEndereco/Usuario" className='tipoCadastro-page__button'>Para Vendedores</a>
                         <a href="/cadastroEndereco/Empresa" className='tipoCadastro-page__button'>Para Empresas</a>
                     </div>
 
