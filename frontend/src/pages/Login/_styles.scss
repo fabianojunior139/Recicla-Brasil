@@ -44,6 +44,7 @@
         font-size: 1.25rem;
         font-weight: 500;
         margin-bottom: 0.5rem;
+        font-family: $font-Montserrat;
     }
 
     &__input {
@@ -91,6 +92,7 @@
         &-info {
             text-decoration: none;
             color: $color-black;
+            font-family: $font-Montserrat;
         }
 
         :hover {

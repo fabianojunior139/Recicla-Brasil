@@ -3,20 +3,16 @@
 .navbar {
     height: 4rem;
     width: 100vw;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: $color-green;
     font-family: $font-Montserrat;
     color: $color-white;
-    padding: 0 1rem;
+    --bs-navbar-padding-y: 0 !important;
 
     &__content {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 0 auto;
-        width: 1156px;
     }
 
     &__itens {
@@ -24,6 +20,7 @@
         justify-content: center;
         align-items: center;
         width: 100%;
+        margin: 0;
     }
 
     &__item {

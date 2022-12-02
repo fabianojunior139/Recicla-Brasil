@@ -60,7 +60,7 @@
         border: 1px solid $color-green;
         font-family: $font-Montserrat;
 
-        &:focus {   
+        &:focus {
             border: 2px solid $color-green-dark;
         }
     }
@@ -80,6 +80,7 @@
 
         &:hover {
             background-color: $color-green-dark;
+            color: $color-white;
         }
     }
 
@@ -95,15 +96,17 @@
         border-radius: 0.5rem;
         margin-left: 0.25rem;
         transition: 0.25s;
-        
+
         &:hover {
             background-color: $color-green-dark;
+            color: $color-white;
+
         }
     }
 }
 
 @media(max-width: 675px) {
-    .recuperaSenha-page{
+    .recuperaSenha-page {
 
         &__card {
             width: 90%;

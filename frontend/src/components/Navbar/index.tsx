@@ -12,7 +12,7 @@ const NavBar = () => {
 
     return (
         <header className='navbar'>
-            <div className="navbar__content">
+            <div className="navbar__content container">
 
                 <a href='/' className='navbar__logo'>
                     <Logobranco width={128} height={64} />
@@ -50,8 +50,6 @@ const NavBar = () => {
 
                     </ul>
                 </div>
-
-
 
                 <a href="#" className='navbar__icon'><VscMenu /></a>
             </div>

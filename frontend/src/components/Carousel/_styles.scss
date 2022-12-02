@@ -1,0 +1,52 @@
+@import '../../styles/abstract/variables';
+
+.carousel-control-next,
+.carousel-control-prev {
+    width: 35% !important;
+    opacity: 1 !important;
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: black !important;
+}
+
+img {
+    border-radius: 1.5rem;
+    height: 75vh;
+}
+
+.carousel-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0.75rem;
+    width: 42rem;
+    border-radius: 1rem;
+    margin-bottom: 30.5rem;
+    color: $color-black;
+
+    &-title {
+        font-size: 1.5rem;
+    }
+
+    &-paragrafo {
+        margin-bottom: 0.5rem;
+    }
+
+    &-btn {
+        margin-top: 0.5rem;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        background-color: $color-green;
+        color: $color-white;
+        border-radius: 1rem;
+        transition: 0.25s;
+
+        &:hover {
+            background-color: $color-green-dark;
+            color: $color-white;
+        }
+    }
+}

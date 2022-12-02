@@ -1,0 +1,106 @@
+@import '../../styles/abstract/variables';
+
+.footer {
+    width: 100vw;
+    background-color: $color-green;
+    display: flex;
+    justify-content: center;
+
+    &__content {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    &__links {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    &__lists {
+        width: 100%;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    &__list-title {
+        font-weight: 700;
+        color: $color-white;
+        margin-bottom: 0.75rem;
+        font-size: 1.125rem;
+    }
+
+    &__list-item {
+        color: $color-white;
+        text-decoration: none;
+
+        &-li {
+            margin-bottom: 0.5rem;
+            transition: 0.25s;
+
+            &:hover {
+                color: $color-black;
+            }
+        }
+    }
+
+    &__social {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    &__socials-media {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+        border-top: 1px solid $color-white;
+    }
+
+    &__social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        margin: 0.5rem;
+        color: $color-white;
+        transition: 0.25s;
+
+        &:focus {
+            border: 2px solid $color-green;
+        }
+
+        &-facebook:hover {
+            color: $color-black;
+        }
+
+        &-instagram:hover {
+            color: $color-black;
+        }
+
+        &-whatsapp:hover {
+            color: $color-black;
+        }
+
+        &-twitter:hover {
+            color: $color-black;
+        }
+    }
+
+    &__copyright-text {
+        color: $color-white;
+        text-align: center;
+        margin-bottom: 0.25rem;
+        font-size: 0.75rem;
+    }
+}
