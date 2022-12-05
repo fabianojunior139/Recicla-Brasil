@@ -8,9 +8,13 @@ class EnderecoController {
         return Endereco.index();
     }
 
+    static async listAdressById(id: number) {
+        return Endereco.findById(id);
+    }
+
     static async CriarEndereco({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: Omit<IEndereco, 'id'>) {
 
-        const celExiste = await Endereco.findByCellphone(tel1);        
+        const celExiste = await Endereco.findByCellphone(tel1);
 
         if (!celExiste) {
             return await Endereco.create({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 })
@@ -19,7 +23,7 @@ class EnderecoController {
         }
     }
 
-    static editAdress({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: IEndereco) {
+    static editAdress({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: IEndereco) {        
         Endereco.update({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 })
     }
 

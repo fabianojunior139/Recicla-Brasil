@@ -2,6 +2,7 @@ import RegisterNewAdressService from "../Services/EnderecoServices/RegisterNewAd
 import ListAllAdressService from "../Services/EnderecoServices/ListAllAdressService"; 
 import UpdateAdressService from "../Services/EnderecoServices/UpdateAdressService";
 import FindIdByCellphoneService from "../Services/EnderecoServices/FindIdByCellphoneService";
+import FindAdressByIdService from "../Services/EnderecoServices/FindAdressByIdService";
 export interface IEndereco {
     id: number,
     cep: string,
@@ -35,6 +36,10 @@ class Endereco {
 
     static async findByCellphone(tel1: string) {
         return await FindIdByCellphoneService.execute(tel1);
+    }
+
+    static async findById(id: number) {
+        return await FindAdressByIdService.execute(id);
     }
 
     static async create({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 }: Omit<IEndereco, 'id'>) {

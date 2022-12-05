@@ -9,8 +9,14 @@ enderecoRouter.get('/', AuthController.verifyJWT, async (req, res) => {
     return res.status(200).json(enderecos);
 })
 
+enderecoRouter.get('/:id', AuthController.verifyJWT, async (req, res) => {
+    const id = parseInt(req.params.id);
+    const endereco = await EnderecoController.listAdressById(id);
+    return res.status(200).json(endereco);
+})
+
 enderecoRouter.post('/', async (req, res) => {
-    const { cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 } = req.body;    
+    const { cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 } = req.body;
     const idEndereco = await EnderecoController.CriarEndereco({ cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 });
 
     if (idEndereco) {
@@ -21,7 +27,7 @@ enderecoRouter.post('/', async (req, res) => {
 });
 
 enderecoRouter.put('/:id', AuthController.verifyJWT, async (req, res) => {
-    const id = parseInt(req.params.id);
+    const id = parseInt(req.params.id);    
     const { cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 } = req.body;
     EnderecoController.editAdress({ id, cep, longradouro, numero, complemento, referencia, bairro, cidade, estado, tel1, tel2 });
     return res.status(200).json({ message: 'Endereço atualizado com sucesso!' })

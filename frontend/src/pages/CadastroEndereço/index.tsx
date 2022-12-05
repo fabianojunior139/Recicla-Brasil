@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { HiLocationMarker } from 'react-icons/hi';
 import { FaUserCircle } from 'react-icons/fa';
 import { BsArrowRight } from 'react-icons/bs';
-import { IEndereco } from '../../interfaces/interfaces';
+import { IEndereco } from '../../interfaces';
 import { authApi } from '../../database/api';
 
 import './_styles.scss';

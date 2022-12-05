@@ -4,7 +4,7 @@ import FindUserByEmailService from "../Services/UsuariosServices/FindUserByEmail
 import FindUserByIdService from "../Services/UsuariosServices/FindUserByIdService";
 import EditUserService from "../Services/UsuariosServices/EditUserService";
 import DeleteUserService from "../Services/UsuariosServices/DeleteUserService";
-
+import UpdateUserPassService from "../Services/UsuariosServices/UpdateUserPassService";
 export interface IUsuario {
     id: number,
     nome: string,
@@ -44,8 +44,12 @@ class Usuario {
         return await RegisterUserService.execute({ nome, data_nascimento, cpf, email, senha, id_endereco });
     }
 
-    static async edit({ id, nome, data_nascimento, cpf, email }: Omit<IUsuario, 'senha, id_endereco'>) {
+    static async update({ id, nome, data_nascimento, cpf, email }: Omit<IUsuario, 'senha, id_endereco'>) {
         return await EditUserService.execute({ id, nome, data_nascimento, cpf, email })
+    }
+
+    static async updatePass(id: number, nova_senha: string) {        
+        return await UpdateUserPassService.execute(id, nova_senha)
     }
 
     static async delete(id: number) {

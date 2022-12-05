@@ -8,6 +8,10 @@ class UsuarioController {
         return Usuario.index();
     }
 
+    static async findUserById(id: number) {
+        return Usuario.findById(id);
+    }
+
     static async CreateUser({ nome, data_nascimento, cpf, email, senha, id_endereco }: Omit<IUsuario, 'id'>) {
         const emailUserExists = await Usuario.findByEmail(email);
         const emailCompanyExists = await Empresa.findByEmail(email)
@@ -21,7 +25,16 @@ class UsuarioController {
     }
 
     static async editUser({ id, nome, data_nascimento, cpf, email }: Omit<IUsuario, 'senha, id_endereco'>) {
-        return await Usuario.edit({ id, nome, data_nascimento, cpf, email });
+        const emailUserExists = await Usuario.findByEmail(email);
+        const emailCompanyExists = await Empresa.findByEmail(email)
+
+        if (!emailUserExists && !emailCompanyExists) {
+            await Usuario.update({ id, nome, data_nascimento, cpf, email });
+            return true;
+        } else {
+            return false;
+        }
+
     }
 
     static async deleteUser(id: number) {

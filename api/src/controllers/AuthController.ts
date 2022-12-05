@@ -9,6 +9,13 @@ export interface Ilogin {
     senha: string
 }
 
+export interface ISenha {
+    id: number,
+    senha_antiga: string,
+    nova_senha: string,
+    confirmacao_senha: string
+}
+
 const SECRET = 'jwtToken';
 
 class AuthController {
@@ -73,27 +80,35 @@ class AuthController {
         }
     }
 
-    // static async EditarSenha(id: number, senha: string) {
-    //     const usuario = await Usuario.findById(id);
+    static async EditarSenha({ id, senha_antiga, nova_senha, confirmacao_senha }: ISenha) {
+        const usuario = await Usuario.findById(id);
 
-    //     if (usuario.length != 0) {
-    //         const senhaAtual = usuario[0].senha;
+        if (usuario) {
 
-    //         const verificaSenha = await bcrypt.compare(senha, senhaAtual);
+            if (nova_senha == confirmacao_senha) {
+                const senhaDoBanco = usuario.senha;
+                const verificaSenha = await bcrypt.compare(senha_antiga, senhaDoBanco);
 
-    //         if (verificaSenha === true) {
-    //             return false;
-    //         }
+                if (verificaSenha === true) {
 
-    //         const hashSenha = await bcrypt.hash(senha, 10);
+                    if (nova_senha != senha_antiga) {
+                        const hashSenha = await bcrypt.hash(nova_senha, 10);
+                        await Usuario.updatePass(id, hashSenha);
+                        return true;
 
-    //         await Usuario.updatePass(id, hashSenha);
-    //         return true;
+                    } else {
+                        return false;
+                    }
 
-    //     } else {
-    //         return false;
-    //     }
-    // }
+                } else {
+                    return false;
+                }
+            } else {
+                return false
+            }
+
+        }
+    }
 
 }
 

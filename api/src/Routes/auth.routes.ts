@@ -14,4 +14,17 @@ authRouter.post('/', async (req, res) => {
     }
 });
 
+authRouter.put('/:id', async (req, res) => {
+    const id = parseInt(req.params.id);
+    const { senha_antiga, nova_senha, confirmacao_senha } = req.body;
+
+    const usuario = await AuthController.EditarSenha({ id, senha_antiga, nova_senha, confirmacao_senha });    
+
+    if (usuario) {
+        return res.status(200).json({ message: 'Senha de usuário alterada com sucesso' });
+    } else {        
+        return res.status(200).send(false);
+    }
+})
+
 export default authRouter;

@@ -1,0 +1,34 @@
+@import '../../styles/abstract/variables';
+
+.bloqueio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    &__message {
+        margin-top: 2rem;
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+
+    &__btn {
+        background-color: $color-green;
+        padding: 0.5rem 1rem;
+        color: $color-white;
+        font-weight: 700;
+        border-radius: 1rem;
+        margin-top: 0.75rem;
+        cursor: pointer;
+        font-family: $font-Montserrat;
+        font-size: 1rem;
+        transition: 0.25s;
+        text-decoration: none;
+
+        &:hover {
+            background-color: $color-green-dark;
+            color: $color-white;
+        }
+    }
+
+}

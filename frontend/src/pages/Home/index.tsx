@@ -1,17 +1,14 @@
 import NavBar from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
-import img1 from '../../assets/1.png';
-import img2 from '../../assets/2.png';
 import { MyCarousel } from '../../components/Carousel';
 
 import './_styles.scss';
-
 
 const Home = () => {
 
 
     return (
-        <main className='home'>
+        <main className='home main'>
             <NavBar />
 
             <section className='home__content'>

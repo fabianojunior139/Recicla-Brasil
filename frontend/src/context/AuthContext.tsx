@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { authApi } from "../database/api";
 
 export interface IUser {
+    id_endereco: any;
     id: number,
     email: string,
     admin?: boolean,
@@ -23,8 +23,6 @@ interface IAuthContext {
 }
 
 const AuthContext = createContext<IAuthContext>({} as IAuthContext);
-
-const navigate = useNavigate;
 
 const AuthProvider = ({ children }: any) => {
 

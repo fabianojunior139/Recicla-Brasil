@@ -1,12 +1,53 @@
 //color viriables
-$color-white: hsl(100,100%,100%);
-$color-white-light: hsla(100,100%,100%,0.8);
+$color-white: hsl(100, 100%, 100%);
+$color-white-light: rgba(209, 209, 209, 0.9);
+$color-white-light-2: rgba(228, 228, 228, 0.9);
 $color-green: hsl(153, 39%, 41%);
 $color-green-dark: hsl(153, 40%, 33%);
 $color-black: hsl(0, 0%, 0%);
 $color-black-light: rgba(0, 0, 0, 0.25);
-
+$color-red: #ff0000;
 
 
 //fonts variables
-$font-Montserrat: 'Montserrat', sans-serif;;
+$font-Montserrat: 'Montserrat',
+sans-serif;
+;
+
+//mixins
+@mixin label() {
+    margin-bottom: 0.25rem;
+    font-size: 1.25rem;
+}
+
+@mixin input() {
+    width: 100%;
+    padding: 0.5rem;
+    border: 0.1px solid $color-white-light;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    font-family: $font-Montserrat;
+
+    &:focus() {
+        outline: 0;
+        border: 2px solid $color-green;
+    }
+}
+
+@mixin btn {
+    border: none;
+    background-color: $color-green;
+    padding: 1rem;
+    color: $color-white;
+    font-weight: 700;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-family: $font-Montserrat;
+    font-size: 1rem;
+    transition: 0.25s;
+    box-shadow: 0px 3px 10px 0px $color-green-dark;
+
+    &:hover {
+        background-color: $color-green-dark;
+    }
+}

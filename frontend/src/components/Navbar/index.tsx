@@ -26,6 +26,8 @@ const NavBar = () => {
                             <div></div>
                         }
 
+                        <li><a href="#" className='navbar__item'>Serviços</a></li>
+
                         {!user.auth ?
                             <li><a href="/tipoCadastro" className='navbar__item'>Faça Parte</a></li>
                             :
@@ -33,10 +35,12 @@ const NavBar = () => {
                         }
 
                         <li><a href="/sobre" className='navbar__item'>Sobre</a></li>
-                        <li><a href="#" className='navbar__item'>Serviços</a></li>
 
                         {user.auth ?
-                            <li><a href="/login" onClick={() => logout()} className='navbar__item navbar__division'>Logout</a></li>
+                            <>
+                                <li><a href="/meuPerfil" className='navbar__item'>Meu Perfil</a></li>
+                                <li><a href="/login" onClick={() => logout()} className='navbar__item navbar__division'>Logout</a></li>
+                            </>
                             :
                             <li><a href="/login" className='navbar__item navbar__division'>Entrar</a></li>
                         }
