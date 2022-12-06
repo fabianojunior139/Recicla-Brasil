@@ -7,6 +7,7 @@ export interface IUser {
     email: string,
     admin?: boolean,
     usuario_ativo: boolean,
+    usuario_comum: boolean
     token: string,
     auth: boolean
 }

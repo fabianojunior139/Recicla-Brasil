@@ -87,4 +87,13 @@ ON UPDATE NO ACTION
 ON DELETE NO ACTION
 NOT VALID;
 
+INSERT INTO public.categoria(nome) VALUES ('Alumínio');
+INSERT INTO public.categoria(nome) VALUES ('Bateria');
+INSERT INTO public.categoria(nome) VALUES ('Cobre');
+INSERT INTO public.categoria(nome) VALUES ('Garrafas de vidro');
+INSERT INTO public.categoria(nome) VALUES ('Garrafa pet');
+INSERT INTO public.categoria(nome) VALUES ('Papelão');
+INSERT INTO public.categoria(nome) VALUES ('Revista e Jornal');
+INSERT INTO public.categoria(nome) VALUES ('Sucatas de Aço');
+
 END;

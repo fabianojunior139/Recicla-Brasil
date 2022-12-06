@@ -25,3 +25,8 @@ export interface ISenha {
     nova_senha: string,
     confirmacao_senha: string
 }
+
+export interface ICategoria {
+    id: number,
+    nome: string
+}

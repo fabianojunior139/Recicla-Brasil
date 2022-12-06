@@ -10,6 +10,8 @@ import { useContext } from 'react';
 import AuthContext from './context/AuthContext';
 import { Sobre } from './pages/Sobre';
 import MeuPerfil from './pages/MeuPerfil';
+import Servicos from './pages/Servicos';
+import Empresa from './pages/Empresa';
 import Bloqueio from './pages/Bloqueio';
 
 function AppRoutes() {
@@ -22,14 +24,17 @@ function AppRoutes() {
                 <Route path='/' element={<Home />} />
                 <Route path='/sobre' element={<Sobre />} />
                 <Route path='/cadastroUsuario/:id' element={<CadastroUsuario />} />
-                
+
                 <Route path='/login' element={(user.auth == true) ? <Home /> : <Login />} />
                 <Route path='/tipoCadastro' element={(user.auth == true) ? <Home /> : <TipoCadastro />} />
                 <Route path='/recuperaSenha' element={(user.auth == true) ? <Home /> : <RecuperaSenha />} />
                 <Route path='/cadastroEmpresa/:idEndereco' element={(user.auth == true) ? <Home /> : <CadastroEmpresa />} />
                 <Route path='/cadastroEndereco/:type' element={(user.auth == true) ? <Home /> : <CadastroEndereco />} />
 
-                <Route path='/meuPerfil' element={<MeuPerfil />} />
+                <Route path='/empresa' element={(user.auth == true && !user.usuario_comum) ? <Empresa /> : <Bloqueio />} />
+
+                <Route path='/meuPerfil' element={(user.auth == true) ? <MeuPerfil /> : <Login />} />
+                <Route path='/servicos' element={(user.auth == true) ? <Servicos /> : <Login />} />
             </Routes>
         </BrowserRouter>
     )

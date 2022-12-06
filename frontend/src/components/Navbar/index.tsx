@@ -9,7 +9,7 @@ import { Logobranco } from '../Logo';
 const NavBar = () => {
 
     const { logout, user } = useContext(AuthContext)
-
+    
     return (
         <header className='navbar'>
             <div className="navbar__content container">
@@ -26,7 +26,11 @@ const NavBar = () => {
                             <div></div>
                         }
 
-                        <li><a href="#" className='navbar__item'>Serviços</a></li>
+                        {user.usuario_comum ?
+                            <li><a href={'/servicos'} className='navbar__item'>Serviços</a></li>
+                            :
+                            <div></div>
+                        }
 
                         {!user.auth ?
                             <li><a href="/tipoCadastro" className='navbar__item'>Faça Parte</a></li>
@@ -38,7 +42,7 @@ const NavBar = () => {
 
                         {user.auth ?
                             <>
-                                <li><a href="/meuPerfil" className='navbar__item'>Meu Perfil</a></li>
+                                <li><a href={`/${user.usuario_comum == true ? 'meuPerfil' : 'empresa'}`} className='navbar__item'>Meu Perfil</a></li>
                                 <li><a href="/login" onClick={() => logout()} className='navbar__item navbar__division'>Logout</a></li>
                             </>
                             :

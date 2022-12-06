@@ -82,6 +82,10 @@ class AuthController {
 
     static async EditarSenha({ id, senha_antiga, nova_senha, confirmacao_senha }: ISenha) {
         const usuario = await Usuario.findById(id);
+        const empresa = await Empresa.findById(id); //nessa linha tem que alterar no Service o tipo de retorno da query do BD. 
+
+        console.log(empresa);
+        
 
         if (usuario) {
 
@@ -99,14 +103,33 @@ class AuthController {
                     } else {
                         return false;
                     }
-
-                } else {
-                    return false;
                 }
+
             } else {
                 return false
             }
 
+        } else if (empresa) {
+            if (nova_senha == confirmacao_senha) {
+                const senhaDoBanco = usuario.senha;
+                const verificaSenha = await bcrypt.compare(senha_antiga, senhaDoBanco);
+
+                if (verificaSenha === true) {
+
+                    if (nova_senha != senha_antiga) {
+                        const hashSenha = await bcrypt.hash(nova_senha, 10);
+                        await Usuario.updatePass(id, hashSenha);
+                        return true;
+
+                    } else {
+                        return false;
+                    }
+                }
+            } else {
+                return false
+            }
+        } else {
+            return false
         }
     }
 

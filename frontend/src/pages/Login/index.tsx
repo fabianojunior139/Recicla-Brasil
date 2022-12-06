@@ -30,6 +30,8 @@ function Login() {
         }
     }    
 
+    console.log(user);
+
     return (
         <main className='login-page'>
             <div className='login-page__left-card'></div>

@@ -24,8 +24,6 @@ const MeuPerfil = () => {
     const [userComum, setUserComum] = useState<IUserComum>({} as IUserComum);
     const [msg, setMsg] = useState(true);
 
-    const navigate = useNavigate();
-
     useEffect(() => {
         authApi(token).get(`/usuario/${user.id}`).then((response) => {
             setUserComum(response.data);

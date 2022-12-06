@@ -1,0 +1,64 @@
+@import '../../styles/abstract/variables';
+
+.container {
+    padding: 0 !important;
+}
+
+.empresa {
+    display: flex;
+    border: 1px solid $color-black-light;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
+
+    &__sidebar {
+        width: 20rem;
+        display: flex;
+        align-items: center;
+        border-right: 1px solid $color-black-light;
+
+        &__list {
+            width: 100%;
+            padding: 0.25rem 0;
+            margin: 0;
+            height: 50rem;
+
+            &-item {
+                padding: 1.25rem;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                text-decoration: none;
+
+                &-selected {
+                    border-left: 5px solid $color-green;
+                }
+
+                &-link {
+                    text-decoration: none;
+                    color: $color-black;
+
+                    &:hover {
+                        color: $color-black;
+                    }
+                }
+
+                &-icon {
+                    display: flex;
+                    justify-content: center;
+                    align-self: center;
+                    margin-right: 1rem;
+                    font-size: 1.5rem;
+                }
+
+                &:hover {
+                    background-color: $color-black-light;
+                    border-left: 5px solid $color-green;
+                }
+            }
+        }
+    }
+
+    &__content {
+        width: 100%;
+    }
+}

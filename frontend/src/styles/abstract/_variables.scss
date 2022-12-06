@@ -1,7 +1,9 @@
 //color viriables
 $color-white: hsl(100, 100%, 100%);
-$color-white-light: rgba(209, 209, 209, 0.9);
+$color-white-light: hsla(100,100%,100%,0.8);
 $color-white-light-2: rgba(228, 228, 228, 0.9);
+$color-white-light-3: rgba(209, 209, 209, 0.9);
+$color-green-light: hsl(157, 32%, 61%);
 $color-green: hsl(153, 39%, 41%);
 $color-green-dark: hsl(153, 40%, 33%);
 $color-black: hsl(0, 0%, 0%);
@@ -23,7 +25,7 @@ sans-serif;
 @mixin input() {
     width: 100%;
     padding: 0.5rem;
-    border: 0.1px solid $color-white-light;
+    border: 0.1px solid $color-white-light-3;
     border-radius: 1rem;
     margin-bottom: 1rem;
     font-family: $font-Montserrat;

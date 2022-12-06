@@ -1,0 +1,60 @@
+@import '../../styles/abstract/variables';
+
+.card-produto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid $color-black-light;
+    border-radius: 0.5rem;
+    margin: 0.5rem 0;
+    width: 100%;
+    padding: 1rem;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px 0px rgba(48, 50, 50, 0.55);
+    transition: 0.25s;
+
+    &:hover {
+        background-color: $color-green-light;
+    }
+
+    &__material {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        align-items: center;
+        flex-direction: column;
+        border-right: 1px solid $color-white-light-2;
+
+        &-type {
+            margin: 0.25rem 0;
+            font-weight: 700;
+        }
+    }
+
+    &__adress {
+        width: 60%;
+        display: flex;
+        align-items: center;
+        align-items: center;
+        flex-direction: column;
+        border-right: 1px solid $color-white-light-2;
+
+        &-adress {
+            margin: 0.25rem;
+        }
+    }
+
+    &__price {
+        width: 20%;
+        display: flex;
+        align-items: center;
+        align-items: center;
+        flex-direction: column;
+
+        &-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+}
