@@ -23,7 +23,8 @@ cnpj character varying NOT NULL,
 descricao character varying NOT NULL,
 email character varying NOT NULL,
 senha character varying NOT NULL,
-usuario_ativo boolean NOT NULL,
+usuario_ativo boolean NOT NULL DEFAULT true,
+usuario_comum boolean NOT NULL DEFAULT false,
 id_endereco integer NOT NULL,
 PRIMARY KEY (id)
 );
@@ -55,6 +56,7 @@ email character varying NOT NULL,
 senha character varying NOT NULL,
 admin boolean NOT NULL DEFAULT false,
 usuario_ativo boolean NOT NULL DEFAULT true,
+usuario_comum boolean NOT NULL DEFAULT false,
 id_endereco integer NOT NULL,
 PRIMARY KEY (id)
 );
