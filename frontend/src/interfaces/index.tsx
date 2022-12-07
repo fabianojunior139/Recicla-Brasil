@@ -30,3 +30,17 @@ export interface ICategoria {
     id: number,
     nome: string
 }
+
+export interface IEmpresa {
+    razao_social: string,
+    cnpj: string,
+    descricao: string,
+    email: string
+}
+
+export interface IProduto {
+    nome: string,
+    valor: string,
+    id_empresa: number,
+    id_categoria: string
+}

@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS public.endereco
 id serial NOT NULL,
 cep character varying NOT NULL,
 longradouro character varying NOT NULL,
+numero integer varying NOT NULL,
 complemento character varying NOT NULL,
 referencia character varying NOT NULL,
 bairro character varying NOT NULL,
@@ -56,7 +57,7 @@ email character varying NOT NULL,
 senha character varying NOT NULL,
 admin boolean NOT NULL DEFAULT false,
 usuario_ativo boolean NOT NULL DEFAULT true,
-usuario_comum boolean NOT NULL DEFAULT false,
+usuario_comum boolean NOT NULL DEFAULT true,
 id_endereco integer NOT NULL,
 PRIMARY KEY (id)
 );

@@ -16,8 +16,8 @@ class Produto {
     private id_empresa: number;
     private id_categoria: number;
 
-    static async index() {
-        return await ListAllProductsService.execute();
+    static async index(id: number) {
+        return await ListAllProductsService.execute(id);
     }
 
     static async create({ nome, valor, id_categoria, id_empresa }: Omit<IProduto, 'id'>) {

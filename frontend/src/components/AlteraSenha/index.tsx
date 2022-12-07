@@ -23,14 +23,14 @@ const AlteraSenha = () => {
         evento.preventDefault();
 
         try {
-            await authApi(token).put(`/auth/${user.id}`, senha).then((response) => {
+            await authApi(token).put(`/auth/${user.id}/${user.usuario_comum ? 'usuario_comum' : 'empresa'}`, senha).then((response) => {
                 setMsg(response.data);
             });
+
             if (msg == false) {
                 alert('Senha errada, tente novamente. ');
             } else {
                 alert('Senha atualizada com sucesso!');
-                window.location.reload();
             }
 
         } catch (error) {

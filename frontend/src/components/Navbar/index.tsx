@@ -14,7 +14,7 @@ const NavBar = () => {
         <header className='navbar'>
             <div className="navbar__content container">
 
-                <a href='/' className='navbar__logo'>
+                <a href='/home' className='navbar__logo'>
                     <Logobranco width={128} height={64} />
                 </a>
 
@@ -42,7 +42,7 @@ const NavBar = () => {
 
                         {user.auth ?
                             <>
-                                <li><a href={`/${user.usuario_comum == true ? 'meuPerfil' : 'empresa'}`} className='navbar__item'>Meu Perfil</a></li>
+                                <li><a href={`/${user.usuario_comum ? 'meuPerfil' : 'empresa'}`} className='navbar__item'>Meu Perfil</a></li>
                                 <li><a href="/login" onClick={() => logout()} className='navbar__item navbar__division'>Logout</a></li>
                             </>
                             :

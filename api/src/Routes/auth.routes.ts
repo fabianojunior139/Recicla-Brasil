@@ -14,11 +14,12 @@ authRouter.post('/', async (req, res) => {
     }
 });
 
-authRouter.put('/:id', async (req, res) => {
+authRouter.put('/:id/:tipo', async (req, res) => {
     const id = parseInt(req.params.id);
+    const tipo = req.params.tipo    
     const { senha_antiga, nova_senha, confirmacao_senha } = req.body;
 
-    const usuario = await AuthController.EditarSenha({ id, senha_antiga, nova_senha, confirmacao_senha });    
+    const usuario = await AuthController.EditarSenha({ id, tipo, senha_antiga, nova_senha, confirmacao_senha });    
 
     if (usuario) {
         return res.status(200).json({ message: 'Senha de usuário alterada com sucesso' });

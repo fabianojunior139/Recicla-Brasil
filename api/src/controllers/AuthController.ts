@@ -11,6 +11,7 @@ export interface Ilogin {
 
 export interface ISenha {
     id: number,
+    tipo: string,
     senha_antiga: string,
     nova_senha: string,
     confirmacao_senha: string
@@ -80,20 +81,21 @@ class AuthController {
         }
     }
 
-    static async EditarSenha({ id, senha_antiga, nova_senha, confirmacao_senha }: ISenha) {
+    static async EditarSenha({ id, tipo, senha_antiga, nova_senha, confirmacao_senha }: ISenha) {
         const usuario = await Usuario.findById(id);
-        const empresa = await Empresa.findById(id); //nessa linha tem que alterar no Service o tipo de retorno da query do BD. 
+        const empresa = await Empresa.findById(id);
 
-        console.log(empresa);
-        
-
-        if (usuario) {
+        if (tipo == 'usuario_comum') {
+            console.log('a');
 
             if (nova_senha == confirmacao_senha) {
+                console.log('b');
+
                 const senhaDoBanco = usuario.senha;
                 const verificaSenha = await bcrypt.compare(senha_antiga, senhaDoBanco);
 
                 if (verificaSenha === true) {
+                    console.log('c');
 
                     if (nova_senha != senha_antiga) {
                         const hashSenha = await bcrypt.hash(nova_senha, 10);
@@ -103,22 +105,25 @@ class AuthController {
                     } else {
                         return false;
                     }
+                } else {
+                    return false;
                 }
 
             } else {
-                return false
+                return false;
             }
 
-        } else if (empresa) {
+        } else if (tipo == 'empresa') {
+
             if (nova_senha == confirmacao_senha) {
-                const senhaDoBanco = usuario.senha;
+                const senhaDoBanco = empresa.senha;
                 const verificaSenha = await bcrypt.compare(senha_antiga, senhaDoBanco);
 
                 if (verificaSenha === true) {
 
                     if (nova_senha != senha_antiga) {
                         const hashSenha = await bcrypt.hash(nova_senha, 10);
-                        await Usuario.updatePass(id, hashSenha);
+                        await Empresa.updatePass(id, hashSenha);
                         return true;
 
                     } else {

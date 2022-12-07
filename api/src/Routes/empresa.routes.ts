@@ -10,6 +10,12 @@ empresaRouter.get('/', AuthController.verifyJWT, async (req, res) => {
     return res.status(200).json(empresas);
 });
 
+empresaRouter.get('/:id', AuthController.verifyJWT, async (req, res) => {
+    const id = parseInt(req.params.id)
+    const user = await EmpresaController.findCompanyById(id);
+    return res.status(200).json(user)
+})
+
 empresaRouter.post('/', async (req, res) => {
     const { razao_social, cnpj, descricao, email, senha, id_endereco } = req.body;
     const hashSenha = await bcrypt.hash(senha, 10);
@@ -24,8 +30,8 @@ empresaRouter.post('/', async (req, res) => {
 
 empresaRouter.put('/:id', AuthController.verifyJWT, async (req, res) => {
     const id = parseInt(req.params.id);
-    const { razao_social, cnpj, descricao, email, usuario_ativo } = req.body;
-    await EmpresaController.updateCompany({ id, razao_social, cnpj, descricao, email, usuario_ativo });
+    const { razao_social, cnpj, descricao, email } = req.body;
+    await EmpresaController.updateCompany({ id, razao_social, cnpj, descricao, email });
     return res.status(200).json({ message: 'Usuário alterado com sucesso!' })
 })
 

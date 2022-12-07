@@ -2,8 +2,8 @@ import Produto from "../models/Produto";
 import { IProduto } from "../models/Produto";
 
 class ProdutoController {
-    static async listarProdutos() {
-        return await Produto.index();
+    static async listarProdutos(id: number) {
+        return await Produto.index(id);
     }
 
     static async cadastrarProduto({ nome, valor, id_categoria, id_empresa }: Omit<IProduto, 'id'>) {

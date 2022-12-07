@@ -21,7 +21,9 @@ function AppRoutes() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path='/' element={<Home />} />
+                <Route path='/' element={(user.auth == true) ? (user.usuario_comum ? <Servicos /> : <Empresa />) : <Login />} />
+
+                <Route path='/home' element={<Home />} />
                 <Route path='/sobre' element={<Sobre />} />
                 <Route path='/cadastroUsuario/:id' element={<CadastroUsuario />} />
 
@@ -31,10 +33,10 @@ function AppRoutes() {
                 <Route path='/cadastroEmpresa/:idEndereco' element={(user.auth == true) ? <Home /> : <CadastroEmpresa />} />
                 <Route path='/cadastroEndereco/:type' element={(user.auth == true) ? <Home /> : <CadastroEndereco />} />
 
+                <Route path='/meuPerfil' element={(user.auth == true) ? <MeuPerfil /> : <Login />} />
+                <Route path='/servicos' element={(user.auth == true && user.usuario_comum) ? <Servicos /> : <Bloqueio />} />
                 <Route path='/empresa' element={(user.auth == true && !user.usuario_comum) ? <Empresa /> : <Bloqueio />} />
 
-                <Route path='/meuPerfil' element={(user.auth == true) ? <MeuPerfil /> : <Login />} />
-                <Route path='/servicos' element={(user.auth == true) ? <Servicos /> : <Login />} />
             </Routes>
         </BrowserRouter>
     )

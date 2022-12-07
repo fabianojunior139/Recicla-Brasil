@@ -9,18 +9,17 @@
     border: 1px solid $color-black-light;
     margin: 0.5rem;
     border-radius: 0.5rem;
+    height: 90vh;
 
     &__sidebar {
         width: 20rem;
         display: flex;
-        align-items: center;
         border-right: 1px solid $color-black-light;
 
         &__list {
             width: 100%;
             padding: 0.25rem 0;
             margin: 0;
-            height: 50rem;
 
             &-item {
                 padding: 1.25rem;

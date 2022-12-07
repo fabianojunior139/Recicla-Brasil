@@ -3,6 +3,7 @@ import CreateNewCompanyService from "../Services/EmpresaServices/CreateNewCompan
 import FindCompanyByEmailService from "../Services/EmpresaServices/FindCompanyByEmailService";
 import FindCompanyByIdService from "../Services/EmpresaServices/FindCompanyByIdService";
 import UpdateCompanyService from "../Services/EmpresaServices/UpdateCompanyService";
+import UpdateCompanyPassService from "../Services/EmpresaServices/UpdateCompanyPassService";
 
 export interface IEmpresa {
     id?: number,
@@ -43,6 +44,10 @@ class Empresa {
 
     static async update({ id, razao_social, cnpj, descricao, email, usuario_ativo }: Omit<IEmpresa, 'senha'>) {
         return await UpdateCompanyService.execute({ id, razao_social, cnpj, descricao, email, usuario_ativo })
+    }
+
+    static async updatePass(id: number, nova_senha: string) {        
+        return await UpdateCompanyPassService.execute(id, nova_senha)
     }
 
 }

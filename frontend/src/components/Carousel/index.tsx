@@ -58,7 +58,7 @@ export const MyCarousel = () => {
                 <Carousel.Caption>
                 <div className='carousel-card'>
                         <h3 className='carousel-card-title'>Ao reciclar, você está contribuindo com a natureza!</h3>
-                        <a href='/' className='carousel-card-btn'>Mais informações sobre reciclagem⠀<i><BsArrowRight /></i></a>
+                        <a href='/home' className='carousel-card-btn'>Mais informações sobre reciclagem⠀<i><BsArrowRight /></i></a>
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -75,7 +75,7 @@ export const MyCarousel = () => {
                 <Carousel.Caption>
                 <div className='carousel-card'>
                         <h3 className='carousel-card-title'>Encontre agora mesmo a empresa mais próximo a sua casa que pague o melhor preço pelo seu materia reciclável!</h3>
-                        <a href='/' className='carousel-card-btn'>Conheça nossos serviços ⠀<i><BsArrowRight /></i></a>
+                        <a href='/servicos' className='carousel-card-btn'>Conheça nossos serviços ⠀<i><BsArrowRight /></i></a>
                     </div>
                 </Carousel.Caption>
             </Carousel.Item>

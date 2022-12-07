@@ -10,15 +10,17 @@ import { useContext, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import AlteraEndereco from '../../components/AlteraEndereco';
 import AlteraSenha from '../../components/AlteraSenha';
+import AlteraDadosEmpresa from '../../components/AlteraDadosEmpresa';
+import CatalogoDeProdutos from '../../components/CatalogoDeProdutos';
+import CadastroNovoProduto from '../../components/CadastroNovoProduto';
 
 import './_styles.scss';
 
 const Empresa = () => {
 
-    const { user, logout } = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
 
-    const [typeForm, setTypeForm] = useState(`dados-pessoais-usuario`);
-
+    const [typeForm, setTypeForm] = useState(`catalogo`);
 
     return (
         <div className='main'>
@@ -69,67 +71,26 @@ const Empresa = () => {
 
                 <div className="empresa__content">
 
-                    {typeForm == 'dados-pessoais-usuario' ?
-                        <div className="empresa__content__usuario">
-                            <span className="empresa__content__usuario-title">Altere seus dados pessoais</span>
-                            <form className="empresa__content__usuario-form">
-
-                                <label className="empresa__content__usuario-form-label" htmlFor="nome">Nome <span style={{ color: "red" }}>*</span></label>
-                                <input
-                                    className="empresa__content__usuario-form-input"
-                                    type="text"
-                                    name='nome'
-                                    id='nome'
-                                    // value={userComum.nome}
-                                    // onChange={(e) => { editarUsuario(e) }}
-                                    required
-                                />
-
-                                <label className="empresa__content__usuario-form-label" htmlFor="data_nascimento">Data de nascimento <span style={{ color: "red" }}>*</span></label>
-                                <input
-                                    className="empresa__content__usuario-form-input"
-                                    type="text"
-                                    name='data_nascimento'
-                                    id='data_nascimento'
-                                    maxLength={10}
-                                    // value={userComum.data_nascimento}
-                                    // onChange={(e) => { editarUsuario(e) }}
-                                    required
-                                />
-
-                                <label className='empresa__content__usuario-form-label' htmlFor="email">CPF <span style={{ color: "red" }}>*</span></label>
-                                <input
-                                    className='empresa__content__usuario-form-input'
-                                    type="text"
-                                    name='cpf'
-                                    id='cpf'
-                                    // value={userComum.cpf}
-                                    // onChange={(e) => { editarUsuario(e) }}
-                                    required
-                                />
-
-                                <label className='empresa__content__usuario-form-label' htmlFor="email">E-mail <span style={{ color: "red" }}>*</span></label>
-                                <input
-                                    className='empresa__content__usuario-form-input'
-                                    type="email"
-                                    name='email'
-                                    id='email'
-                                    // value={userComum.email}
-                                    // onChange={(e) => { editarUsuario(e) }}
-                                    required
-                                />
-
-                                <button type="submit" className="empresa__content__usuario-form-btn">SALVAR INFORMAÇÕES</button>
-
-                                <span className="empresa__content__usuario-form-alert">* Campos requeridos</span>
-                            </form>
-                        </div>
+                    {typeForm == 'catalogo' ?
+                        <CatalogoDeProdutos />
                         :
                         <>
-                            {typeForm == 'alterar-senha' ?
-                                <AlteraSenha />
+                            {typeForm == 'cadastro-produto' ?
+                                <CadastroNovoProduto />
                                 :
-                                <AlteraEndereco />
+                                <>
+                                    {typeForm == 'dados-pessoais-usuario' ?
+                                        <AlteraDadosEmpresa />
+                                        :
+                                        <>
+                                            {typeForm == 'seu-endereco' ?
+                                                <AlteraEndereco />
+                                                :
+                                                <AlteraSenha />
+                                            }
+                                        </>
+                                    }
+                                </>
                             }
                         </>
                     }

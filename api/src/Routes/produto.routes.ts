@@ -4,8 +4,9 @@ import AuthController from "../controllers/AuthController";
 
 const produtoRouter = Router();
 
-produtoRouter.get('/', AuthController.verifyJWT, async (req, res) => {
-    const produtos = await ProdutoController.listarProdutos();
+produtoRouter.get('/:idEmpresa', AuthController.verifyJWT, async (req, res) => {
+    const id = parseInt(req.params.idEmpresa);
+    const produtos = await ProdutoController.listarProdutos(id);
     return res.status(200).json(produtos)
 });
 

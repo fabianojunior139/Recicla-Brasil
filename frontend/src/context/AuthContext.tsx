@@ -44,9 +44,8 @@ const AuthProvider = ({ children }: any) => {
                 .then((response) => {
                     localStorage.setItem('user', JSON.stringify(response.data));
                     setUserData(response.data);
-
                 }).catch(() => {
-                    alert("Usuário ou senha incorreto");
+                    alert("Usuário ou senha incorretos!");
                 })
 
         } catch (error) {

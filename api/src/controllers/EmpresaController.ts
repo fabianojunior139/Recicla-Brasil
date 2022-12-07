@@ -7,6 +7,10 @@ class EmpresaController {
         return Empresa.index();
     }
 
+    static async findCompanyById(id: number) {
+        return Empresa.findById(id);
+    }
+
     static async createCompany({ razao_social, cnpj, descricao, email, senha, id_endereco }: Omit<IEmpresa, 'id'>) {
         const emailUserExists = await Usuario.findByEmail(email);
         const emailCompanyExists = await Empresa.findByEmail(email)
@@ -19,8 +23,8 @@ class EmpresaController {
         }
     }
 
-    static async updateCompany({ id, razao_social, cnpj, descricao, email, usuario_ativo }: Omit<IEmpresa, 'senha, id_endereco'>) {
-        return await Empresa.update({ id, razao_social, cnpj, descricao, email, usuario_ativo });
+    static async updateCompany({ id, razao_social, cnpj, descricao, email }: Omit<IEmpresa, 'senha, id_endereco'>) {
+        return await Empresa.update({ id, razao_social, cnpj, descricao, email });
     }
 
     // static async deleteCompany(id: number) {

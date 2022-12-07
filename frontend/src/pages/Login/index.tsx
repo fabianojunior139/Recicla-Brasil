@@ -26,11 +26,8 @@ function Login() {
             navigate('/');
         } else {
             alert('usuário inválido');
-            navigate('/login')
         }
     }    
-
-    console.log(user);
 
     return (
         <main className='login-page'>
