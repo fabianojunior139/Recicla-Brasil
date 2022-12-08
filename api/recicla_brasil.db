@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS public.endereco
 id serial NOT NULL,
 cep character varying NOT NULL,
 longradouro character varying NOT NULL,
-numero integer varying NOT NULL,
+numero integer NOT NULL,
 complemento character varying NOT NULL,
 referencia character varying NOT NULL,
 bairro character varying NOT NULL,
@@ -92,11 +92,10 @@ NOT VALID;
 
 INSERT INTO public.categoria(nome) VALUES ('Alumínio');
 INSERT INTO public.categoria(nome) VALUES ('Bateria');
-INSERT INTO public.categoria(nome) VALUES ('Cobre');
-INSERT INTO public.categoria(nome) VALUES ('Garrafas de vidro');
-INSERT INTO public.categoria(nome) VALUES ('Garrafa pet');
-INSERT INTO public.categoria(nome) VALUES ('Papelão');
-INSERT INTO public.categoria(nome) VALUES ('Revista e Jornal');
+INSERT INTO public.categoria(nome) VALUES ('Metal');
+INSERT INTO public.categoria(nome) VALUES ('Papel');
+INSERT INTO public.categoria(nome) VALUES ('Plástico');
 INSERT INTO public.categoria(nome) VALUES ('Sucatas de Aço');
+INSERT INTO public.categoria(nome) VALUES ('Vidro');
 
 END;
