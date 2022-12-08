@@ -1,19 +1,24 @@
+import { useNavigate } from 'react-router-dom';
+import { ICard } from '../../interfaces';
 import './_styles.scss';
 
-const Card = () => {
+const Card = ({ id_produto, longradouro, numero, razao_social, nome_produto, valor_produto, nome_categoria }: ICard) => {
+
+    const navigate = useNavigate();
+
     return (
-        <section className='card-produto'>
+        <section className='card-produto' onClick={() => { navigate(`/infoProduto/${id_produto}`) }}>
             <div className='card-produto__material'>
-                <span>Material</span>
-                <span className='card-produto__material-type'>Alumínio</span>
+                <span>{nome_categoria}</span>
+                <span className='card-produto__material-type'>{nome_produto}</span>
             </div>
             <div className='card-produto__adress'>
-                <span>Reciclagem I</span>
-                <span className='card-produto__adress-adress'>Qnn 18 Conjunto N lote 51</span>
+                <span>{razao_social}</span>
+                <span className='card-produto__adress-adress'>{longradouro + ' ' + numero}</span>
             </div>
             <div className='card-produto__price'>
                 <span>Preço por quilo</span>
-                <span className='card-produto__price-price'>R$ 11,69</span>
+                <span className='card-produto__price-price'>R$ {valor_produto}</span>
             </div>
         </section>
     )

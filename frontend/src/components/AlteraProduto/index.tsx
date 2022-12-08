@@ -1,20 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../context/AuthContext';
 import { authApi } from '../../database/api';
 import { ICategoria, IProduto } from '../../interfaces';
+import './_styles.scss'
 
-import './_styles.scss';
+interface IId {
+    id: number
+}
 
-// import "bootstrap/dist/css/bootstrap.css";
-// import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
-// import BootstrapTable from "react-bootstrap-table-next";
-// import paginationFactory from "react-bootstrap-table2-paginator";
+const AlteraProduto = ({ id }: IId) => {
 
-import DataTable from "react-data-table-component";
-
-const CadastroNovoProduto = () => {
-
-    const { user } = useContext(AuthContext);
+    const { user } = useContext(AuthContext)
     const token = user.token;
 
     const [categoria, setCategoria] = useState<ICategoria[]>([]);
@@ -27,41 +23,36 @@ const CadastroNovoProduto = () => {
         })
     }, []);
 
+    const [produto, setProduto] = useState({} as IProduto);
 
-    const valorInicialProduto = {
-        nome: '',
-        id_categoria: '',
-        valor: '',
-        id_empresa: user.id
-    }
+    useEffect(() => {
+        authApi(token).get(`/produto/id/${id}`).then((response) => {
+            setProduto(response.data);
+        }).catch((erro) => {
+            console.log(`erro ao listar o produto: ${erro}`);
+        })
+    }, []);
 
-    const [produto, setProduto] = useState<IProduto>(valorInicialProduto);
-
-    function editarProduto(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLSelectElement>) {
-        const { name, value } = e.target;
+    function editarProduto(evento: any) {
+        const { name, value } = evento.target;
         setProduto({ ...produto, [name]: value });
     }
 
-    async function salvarProduto(e: React.FormEvent<HTMLFormElement>) {
-        e.preventDefault();
+    async function salvarProduto(evento: React.FormEvent<HTMLFormElement>) {
+        evento.preventDefault();
+
         try {
-            await authApi(token).post('/produto', produto).then(response => {
-                const produto = response.data;
-                if (produto) {
-                    alert('Produto cadastrado com sucesso!');
-                    window.location.reload();
-                } else {
-                    alert('Erro ao cadastrar o produto, tente novamente!');
-                }
-            })
+            await authApi(token).put(`/produto/${produto.id}}`, produto);
+            alert('Produto atualizado com sucesso!');
+            window.location.reload();
         } catch (error) {
-            alert('Erro ao cadastrar o produto, tente novamente!');
+            console.log(error);
         }
     }
-
+    
     return (
         <div className="AlteraDadosEmpresa__content__usuario">
-            <span className="AlteraDadosEmpresa__content__usuario-title">Cadastre um novo produto em seu catálogo!</span>
+            <span className="AlteraDadosEmpresa__content__usuario-title">Edite o produto selecionado</span>
             <form className="AlteraDadosEmpresa__content__usuario-form" onSubmit={salvarProduto}>
 
                 <label className='AlteraDadosEmpresa__content__usuario-form-label' htmlFor="id_categoria">Categoria <span style={{ color: "red" }}>*</span></label>
@@ -70,7 +61,7 @@ const CadastroNovoProduto = () => {
                     id="id_categoria"
                     className='AlteraDadosEmpresa__content__usuario-form-input'
                     onChange={(e) => { editarProduto(e) }}
-                    defaultValue={''}
+                    value={produto.id_categoria}
                     required >
 
                     <option value={''} disabled>Selecione a categoria...</option>
@@ -87,6 +78,7 @@ const CadastroNovoProduto = () => {
                     type="text"
                     name='nome'
                     id='nome'
+                    value={produto.nome}
                     onChange={(e) => { editarProduto(e) }}
                     required
                 />
@@ -97,6 +89,7 @@ const CadastroNovoProduto = () => {
                     type="text"
                     name='valor'
                     id='valor'
+                    value={produto.valor}
                     onChange={(e) => { editarProduto(e) }}
                     required
                 />
@@ -109,4 +102,4 @@ const CadastroNovoProduto = () => {
     )
 }
 
-export default CadastroNovoProduto;
+export default AlteraProduto;

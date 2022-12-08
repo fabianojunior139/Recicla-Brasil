@@ -31,6 +31,7 @@ const AlteraSenha = () => {
                 alert('Senha errada, tente novamente. ');
             } else {
                 alert('Senha atualizada com sucesso!');
+                window.location.reload();
             }
 
         } catch (error) {

@@ -18,15 +18,15 @@ export const Footer = () => {
                     <div className='footer__lists'>
                         <ul>
                             <li className='footer__list-title'>Serviços</li>
-                            <a href='/sobre'className='footer__list-item'><li className='footer__list-item-li'>Ver todos os serviços</li></a>
-                            <a href='/tipoCadastro'className='footer__list-item'><li className='footer__list-item-li'>Acha a empresa mais próxima</li></a>
+                            <a href='/servicos'className='footer__list-item'><li className='footer__list-item-li'>Ver todos os serviços</li></a>
+                            <a href='/servicos'className='footer__list-item'><li className='footer__list-item-li'>Acha a empresa mais próxima</li></a>
                         </ul>
                     </div>
                     <div className='footer__lists'>
                         <ul>
                             <li className='footer__list-title'>Atendimento ao cliente</li>
                             <a href='/sobre' className='footer__list-item'><li className='footer__list-item-li'>Fale Conosco</li></a>
-                            <a href='/tipoCadastro' className='footer__list-item'><li className='footer__list-item-li'>FAQ</li></a>
+                            <a href='/sobre' className='footer__list-item'><li className='footer__list-item-li'>FAQ</li></a>
                         </ul>
                     </div>
                 </div>

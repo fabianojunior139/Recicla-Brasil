@@ -2,12 +2,18 @@ import NavBar from '../../components/Navbar';
 import { Footer } from '../../components/Footer';
 import { FaFilter } from 'react-icons/fa'
 import { useContext, useEffect, useState } from 'react';
-import { ICategoria } from '../../interfaces';
+import { ICard, ICategoria } from '../../interfaces';
 import { authApi } from '../../database/api';
 import AuthContext from '../../context/AuthContext';
 import Card from '../../components/Card';
 
 import './_styles.scss';
+
+const valorInicial = {
+    nomeDoProduto: '',
+    nomeDaEmpresa: '',
+    id_categoria: 0
+}
 
 const Servicos = () => {
 
@@ -25,7 +31,22 @@ const Servicos = () => {
         })
     }, []);
 
-    
+    const [filtros, setFiltros] = useState(valorInicial);
+
+    const [card, setCard] = useState<ICard[]>([])
+
+    useEffect(() => {
+        authApi(token).post(`/produto/filtros`, filtros).then((response) => {
+            setCard(response.data);
+        }).catch((erro) => {
+            console.log(`erro ao listar os chamados: ${erro}`);
+        })
+    }, [filtros]);
+
+    function editarFiltros(e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) {
+        const { name, value } = e.target;
+        setFiltros({ ...filtros, [name]: value });
+    }
 
     return (
         <div className='main'>
@@ -38,10 +59,10 @@ const Servicos = () => {
                     <form className='servicos__filtros-form'>
                         <span className='servicos__filtros-form-icon'><FaFilter /> Filtrar busca</span>
                         <div className='servicos__filtros-form-inputs'>
-                            <input type="text" className='servicos__filtros-form-input' placeholder='Nome do produto...' />
-                            <input type="text" className='servicos__filtros-form-input' placeholder='Nome da empresa...' />
+                            <input type="text" name='nomeDoProduto' className='servicos__filtros-form-input' onChange={editarFiltros} placeholder='Nome do produto...' />
+                            <input type="text" name='nomeDaEmpresa' className='servicos__filtros-form-input' onChange={editarFiltros} placeholder='Nome da empresa...' />
 
-                            <select name="categoria" id="categoria" className='servicos__filtros-form-input' defaultValue={''} required >
+                            <select name="id_categoria" id="id_categoria" className='servicos__filtros-form-input' defaultValue={''} onChange={editarFiltros} required >
                                 <option value={''} disabled>Selecione a categoria...</option>
                                 <option value={0}>Todos as categorias</option>
                                 {
@@ -51,7 +72,7 @@ const Servicos = () => {
                                 }
                             </select>
                         </div>
-                        <span className='servicos__filtros-form-result'>0 resultados</span>
+                        <span className='servicos__filtros-form-result'>{card.length} resultados</span>
                     </form>
 
                     <div className='servicos__mapa'>
@@ -59,10 +80,20 @@ const Servicos = () => {
                     </div>
 
                     <div className='servicos__cards'>
-                        <Card />
-                        <Card />
-                        <Card />
-                        <Card />
+                        {
+                            card.map(produto => (
+                                <Card key={produto.id_produto}
+                                    id_produto={produto.id_produto}
+                                    longradouro={produto.longradouro}
+                                    numero={produto.numero}
+                                    razao_social={produto.razao_social}
+                                    nome_produto={produto.nome_produto}
+                                    valor_produto={produto.valor_produto}
+                                    nome_categoria={produto.nome_categoria}
+                                />
+                            ))
+                        }
+
                     </div>
 
                 </div>

@@ -68,17 +68,18 @@ const MeuPerfil = () => {
                             </i>Dados Pessoais
                         </li>
 
+                        <li className={`meuPerfil__sidebar__list-item ${typeForm == 'seu-endereco' ? 'meuPerfil__sidebar__list-item-selected' : ''}`} onClick={() => { setTypeForm('seu-endereco') }}>
+                            <i className="meuPerfil__sidebar__list-item-icon">
+                                <HiLocationMarker />
+                            </i>Seu Endereço
+                        </li>
+
                         <li className={`meuPerfil__sidebar__list-item ${typeForm == 'alterar-senha' ? 'meuPerfil__sidebar__list-item-selected' : ''}`} onClick={() => { setTypeForm('alterar-senha') }}>
                             <i className="meuPerfil__sidebar__list-item-icon">
                                 <RiLockPasswordLine />
                             </i>Alterar Senha
                         </li>
 
-                        <li className={`meuPerfil__sidebar__list-item ${typeForm == 'seu-endereco' ? 'meuPerfil__sidebar__list-item-selected' : ''}`} onClick={() => { setTypeForm('seu-endereco') }}>
-                            <i className="meuPerfil__sidebar__list-item-icon">
-                                <HiLocationMarker />
-                            </i>Seu Endereço
-                        </li>
 
                         <a href="/login" className="meuPerfil__sidebar__list-item-link">
                             <li className="meuPerfil__sidebar__list-item" onClick={logout}>

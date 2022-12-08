@@ -13,6 +13,7 @@ import MeuPerfil from './pages/MeuPerfil';
 import Servicos from './pages/Servicos';
 import Empresa from './pages/Empresa';
 import Bloqueio from './pages/Bloqueio';
+import InfoProduto from './pages/InfoProduto';
 
 function AppRoutes() {
 
@@ -36,6 +37,10 @@ function AppRoutes() {
                 <Route path='/meuPerfil' element={(user.auth == true) ? <MeuPerfil /> : <Login />} />
                 <Route path='/servicos' element={(user.auth == true && user.usuario_comum) ? <Servicos /> : <Bloqueio />} />
                 <Route path='/empresa' element={(user.auth == true && !user.usuario_comum) ? <Empresa /> : <Bloqueio />} />
+
+                <Route path='/infoProduto/:id_produto' element={(user.auth == true) ? <InfoProduto /> : <Bloqueio />} />
+
+
 
             </Routes>
         </BrowserRouter>

@@ -3,8 +3,10 @@ import AuthContext from '../../context/AuthContext'
 import { authApi } from '../../database/api';
 import { IProduto } from '../../interfaces';
 import DataTable from "react-data-table-component";
-
+import MensagemExcluir from '../MensagemExcluir';
 import { AiFillEye, AiFillEdit, AiOutlineClose } from 'react-icons/ai'
+import AlteraProduto from '../AlteraProduto';
+import { IInfoProduto } from '../../interfaces';
 
 import './_styles.scss'
 import { useNavigate } from 'react-router-dom';
@@ -17,9 +19,13 @@ const ProdutoTable = () => {
     const navigate = useNavigate();
 
     const [produto, setProduto] = useState<IProduto[]>([]);
+    const [msgExcluir, setMsgExcluir] = useState('table');
+    const [id, setId] = useState(0);
+    const [idProduto, setIdProduto] = useState(0);
+    const [nome, setNome] = useState('');
 
     useEffect(() => {
-        authApi(token).get(`/produto/${user.id}`).then((response) => {
+        authApi(token).get(`/produto/empresa/${user.id}`).then((response) => {            
             setProduto(response.data);
         }).catch((erro) => {
             console.log(`erro ao listar os produtos: ${erro}`);
@@ -37,7 +43,7 @@ const ProdutoTable = () => {
             name: "Categoria",
             sortable: true,
             center: true,
-            selector: (row: any) => row.id_categoria,
+            selector: (row: any) => row.nome_categoria,
         },
         {
             name: "Valor",
@@ -51,7 +57,9 @@ const ProdutoTable = () => {
             sortable: false,
             maxWidth: '1px',
             center: true,
-            selector: (row: any) => <button className='produtosTable__btn' onClick={() => {  }}>
+            selector: (row: any) => <button className='produtosTable__btn' onClick={() => {
+                navigate(`/infoProduto/${row.id}`)
+            }}>
                 <i className='produtosTable__icon'><AiFillEye /></i>
             </button>,
         },
@@ -60,7 +68,9 @@ const ProdutoTable = () => {
             sortable: false,
             maxWidth: '1px',
             center: true,
-            selector: (row: any) => <button className='produtosTable__btn'>
+            selector: (row: any) => <button className='produtosTable__btn' onClick={() => {
+                setMsgExcluir('editar'), setIdProduto(row.id)
+            }}>
                 <i className='produtosTable__icon'><AiFillEdit /></i>
             </button>,
         },
@@ -69,19 +79,42 @@ const ProdutoTable = () => {
             sortable: false,
             maxWidth: "10px",
             center: true,
-            selector: (row: any) => <button className='produtosTable__btn'>
+            selector: (row: any) => <button className='produtosTable__btn' onClick={() => {
+                setId(row.id), setMsgExcluir('excluir'), setNome(row.nome)
+            }}>
                 <i className='produtosTable__icon'><AiOutlineClose /></i>
             </button>,
         }
     ]
     AiOutlineClose
-    return <DataTable
-        columns={columns}
-        data={produto}
-        className='produtosTable'
-        title='Produtos cadastrados pela empresa'
-        pagination
-    />
+
+    console.log(produto);
+    
+
+    return (
+        <>
+            {msgExcluir == 'table' ?
+                <DataTable
+                    columns={columns}
+                    data={produto}
+                    className='produtosTable'
+                    title='Produtos cadastrados pela empresa'
+                    pagination
+                />
+                :
+                <>
+                    {msgExcluir == 'excluir' ?
+                        <MensagemExcluir id={id} nome={nome} abortarExclusão={setMsgExcluir} />
+                        :
+                        <AlteraProduto id={idProduto} />
+                    }
+                </>
+
+            }
+
+        </>
+    )
+
 
 }
 

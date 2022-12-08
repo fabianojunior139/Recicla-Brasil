@@ -39,8 +39,43 @@ export interface IEmpresa {
 }
 
 export interface IProduto {
+    id?: number,
     nome: string,
     valor: string,
     id_empresa: number,
     id_categoria: string
+}
+
+export interface ICard {
+    longradouro: string,
+    numero: number,
+    razao_social: string,
+    id_produto?: number,
+    nome_produto: string,
+    valor_produto: string,
+
+    id_categoria?: number,
+    nome_categoria: string
+}
+
+export interface IInfoProduto {
+    bairro: string,
+    cep: string,
+    cnpj: string,
+    complemento: string,
+    descricao: string,
+    email: string,
+    estado: string,
+    id: number
+    nome_categoria: number,
+    id_produto: number,
+    longradouro: string,
+    nome_produto: string,
+    numero: number,
+    razao_social: string,
+    referencia: string,
+    tel1: string,
+    tel2: string,
+    valor_produto: string,
+    cidade: string
 }

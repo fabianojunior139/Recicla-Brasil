@@ -19,13 +19,15 @@
     }
 
     &__material {
-        width: 20%;
+        width: 25%;
         display: flex;
-        align-items: center;
+        justify-content: center;
         align-items: center;
         flex-direction: column;
+        text-align: center;
         border-right: 1px solid $color-white-light-2;
-
+        padding: 0.5rem;
+        
         &-type {
             margin: 0.25rem 0;
             font-weight: 700;
@@ -33,7 +35,7 @@
     }
 
     &__adress {
-        width: 60%;
+        width: 50%;
         display: flex;
         align-items: center;
         align-items: center;
@@ -46,7 +48,7 @@
     }
 
     &__price {
-        width: 20%;
+        width: 25%;
         display: flex;
         align-items: center;
         align-items: center;
