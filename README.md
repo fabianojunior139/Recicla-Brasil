@@ -57,6 +57,7 @@ Após iniciar a API e o Front-end, basta clicar no link segurando o ctrl (ou cop
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
 ```
+<br>
 
 ## 📃 Documentação
 No link a seguir está disponibilizado a documentação referente a este TCC, incluindo toda a modelagem do sistema e os diagramas que facilitaram o desenvolvimento desta aplicação web: https://drive.google.com/file/d/1rSybVQaKIiLLDGhSVx5f-kWpRyrBVll8/view?usp=sharing
