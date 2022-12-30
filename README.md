@@ -1,6 +1,6 @@
  <h1 align="center">Recicla +Brasil ♻</h1>
  <p>Este sistema foi feito para aprensetação do meu TCC na faculdade apresentado no dia 08 de Dezembro de 2022.</p>
- <p>Esta aplicação web tem como proposta mostrar para a comunidade as empresas de reciclagem que pagam por materiais recicláveis que estão mais próximas do usuário logado</p>
+ <p>Esta aplicação web tem como proposta mostrar para a comunidade, de forma prática e rápida, as empresas de reciclagem que compram materiais recicláveis que estão mais próximas do usuário logado</p>
 
 ## 🖥 Preview
 https://youtu.be/lIMbT8WGJWU
@@ -57,3 +57,7 @@ Após iniciar a API e o Front-end, basta clicar no link segurando o ctrl (ou cop
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
 ```
+
+## 📃 Documentação
+No link a seguir está disponibilizado a documentação referente a este TCC, incluindo toda a modelagem do sistema e os diagramas que facilitaram o desenvolvimento desta aplicação web: https://drive.google.com/file/d/1rSybVQaKIiLLDGhSVx5f-kWpRyrBVll8/view?usp=sharing
+
