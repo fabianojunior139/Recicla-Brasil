@@ -1,5 +1,5 @@
  <h1 align="center">Recicla +Brasil ♻</h1>
- <p>Este sistema foi feito para aprensetação do meu TCC na faculdade apresentado no dia 08 de Dezembro de 2022.</p>
+ <p>Este sistema foi feito para apresentação do meu TCC na faculdade apresentado no dia 08 de Dezembro de 2022.</p>
  <p>Esta aplicação web tem como proposta mostrar para a comunidade, de forma prática e rápida, as empresas de reciclagem que compram materiais recicláveis que estão mais próximas do usuário logado</p>
 
 ## 🖥 Preview
