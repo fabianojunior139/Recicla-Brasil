@@ -28,7 +28,7 @@ https://youtu.be/lIMbT8WGJWU
 ## ⚙ Como rodar a aplicação? 
 
 ### 1° Passo - Criação do banco de dados
-Ao baixar e instalar o <a href="https://www.postgresql.org/download/">PostgreSQL</a>, basta abrir o PgAdmin 4 para a criação do banco de dados. Primeiro você deve criar uma base de dados para posteriormente criar as tabelas, os script para criação das tabelas estão no arquivo no caminho abaixo.
+Ao baixar e instalar o <a href="https://nodejs.org/en/download/">Node.js</a> e o <a href="https://www.postgresql.org/download/">PostgreSQL</a>, basta abrir o PgAdmin 4 para a criação do banco de dados. Primeiro você deve criar uma base de dados para posteriormente criar as tabelas, os script para criação das tabelas estão no arquivo no caminho abaixo.
 > api/recicla_brasil.db
 <br>
 
